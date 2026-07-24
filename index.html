@@ -2,1447 +2,2183 @@
 <html lang="es">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantamos</title>
 
-<title>Plantamos</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-<style>
+    body {
+      background: linear-gradient(to bottom, #dff5df, #f4fff4);
+      overflow-x: hidden;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+    /* HEADER */
+    header {
+      height: 100vh;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
 
-body{
-background:linear-gradient(to bottom,#dff5df,#f4fff4);
-overflow-x:hidden;
-}
+    header .contenido {
+      width: 80%;
+      animation: entrada 2s;
+    }
 
-/* HEADER */
+    header h1 {
+      font-size: 75px;
+      color: #98ff98;
+      margin-bottom: 20px;
+      text-shadow: 3px 3px 10px black;
+    }
 
-header{
-height:100vh;
-background:
-linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
-url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
-background-size:cover;
-background-position:center;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-color:white;
-}
+    header p {
+      font-size: 24px;
+      line-height: 1.8;
+    }
 
-header .contenido{
-width:80%;
-animation:entrada 2s;
-}
+    /* INTRO */
+    .intro {
+      width: 85%;
+      margin: 60px auto;
+      background: white;
+      padding: 45px;
+      border-radius: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
 
-header h1{
-font-size:75px;
-color:#98ff98;
-margin-bottom:20px;
-text-shadow:3px 3px 10px black;
-}
+    .intro h2 {
+      font-size: 45px;
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
 
-header p{
-font-size:24px;
-line-height:1.8;
-}
+    .intro p {
+      font-size: 21px;
+      line-height: 1.9;
+      color: #444;
+    }
 
-/* INTRO */
+    /* BUSCADOR */
+    .buscador-container {
+      width: 90%;
+      max-width: 600px;
+      margin: 40px auto 10px auto;
+      text-align: center;
+    }
 
-.intro{
-width:85%;
-margin:60px auto;
-background:white;
-padding:45px;
-border-radius:30px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
+    #buscador {
+      width: 100%;
+      padding: 16px 25px;
+      font-size: 20px;
+      border: 2px solid #2e7d32;
+      border-radius: 30px;
+      outline: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
 
-.intro h2{
-font-size:45px;
-color:#2e7d32;
-margin-bottom:20px;
-}
+    #buscador:focus {
+      border-color: #1b5e20;
+      box-shadow: 0 6px 15px rgba(46, 125, 50, 0.3);
+    }
 
-.intro p{
-font-size:21px;
-line-height:1.9;
-color:#444;
-}
+    /* TITULO */
+    .titulo {
+      text-align: center;
+      font-size: 55px;
+      color: #1b5e20;
+      margin-top: 30px;
+    }
 
-/* TITULO */
+    /* CARDS */
+    .contenedor {
+      width: 90%;
+      margin: 50px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 35px;
+    }
 
-.titulo{
-text-align:center;
-font-size:55px;
-color:#1b5e20;
-margin-top:30px;
-}
+    .card {
+      background: white;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: 0.4s;
+    }
 
-/* CARDS */
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+    }
 
-.contenedor{
-width:90%;
-margin:50px auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:35px;
-}
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
 
-.card{
-background:white;
-border-radius:25px;
-overflow:hidden;
-box-shadow:0 10px 20px rgba(0,0,0,0.2);
-cursor:pointer;
-transition:0.4s;
-}
+    .card h2 {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 35px;
+      color: #2e7d32;
+    }
 
-.card:hover{
-transform:translateY(-10px) scale(1.03);
-}
+    .card p {
+      text-align: center;
+      padding: 15px;
+      font-size: 18px;
+      color: gray;
+    }
 
-.card img{
-width:100%;
-height:280px;
-object-fit:cover;
-}
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 1000;
+    }
 
-.card h2{
-text-align:center;
-padding-top:20px;
-font-size:35px;
-color:#2e7d32;
-}
+    .modal-contenido {
+      background: white;
+      width: 90%;
+      max-width: 900px;
+      border-radius: 25px;
+      overflow: auto;
+      max-height: 95vh;
+    }
 
-.card p{
-text-align:center;
-padding:15px;
-font-size:18px;
-color:gray;
-}
+    .modal-contenido img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+    }
 
+    .info {
+      padding: 40px;
+    }
 
+    .info h2 {
+      font-size: 50px;
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
 
-/* MODAL */
+    .info h3 {
+      margin-top: 25px;
+      margin-bottom: 10px;
+      font-size: 28px;
+      color: #1b5e20;
+    }
 
-.modal{
-display:none;
-position:fixed;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-justify-content:center;
-align-items:center;
-padding:20px;
-z-index:1000;
-}
+    .info p {
+      font-size: 20px;
+      line-height: 1.9;
+      color: #444;
+    }
 
-.modal-contenido{
-background:white;
-width:90%;
-max-width:900px;
-border-radius:25px;
-overflow:auto;
-max-height:95vh;
-}
+    button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      border: none;
+      background: #2e7d32;
+      color: white;
+      border-radius: 15px;
+      font-size: 18px;
+      cursor: pointer;
+    }
 
-.modal-contenido img{
-width:100%;
-height:380px;
-object-fit:cover;
-}
+    button:hover {
+      background: #1b5e20;
+    }
 
-.info{
-padding:40px;
-}
+    /* FOOTER */
+    footer {
+      background: #1b5e20;
+      color: white;
+      text-align: center;
+      padding: 40px;
+      margin-top: 50px;
+    }
 
-.info h2{
-font-size:50px;
-color:#2e7d32;
-margin-bottom:20px;
-}
+    footer h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
 
-.info h3{
-margin-top:25px;
-margin-bottom:10px;
-font-size:28px;
-color:#1b5e20;
-}
+    footer p {
+      font-size: 20px;
+    }
 
-.info p{
-font-size:20px;
-line-height:1.9;
-color:#444;
-}
-
-button{
-margin-top:30px;
-padding:15px 30px;
-border:none;
-background:#2e7d32;
-color:white;
-border-radius:15px;
-font-size:18px;
-cursor:pointer;
-}
-
-button:hover{
-background:#1b5e20;
-}
-
-/* FOOTER */
-
-footer{
-background:#1b5e20;
-color:white;
-text-align:center;
-padding:40px;
-margin-top:50px;
-}
-
-footer h2{
-font-size:30px;
-margin-bottom:15px;
-}
-
-footer p{
-font-size:20px;
-}
-
-/* ANIMACIONES */
-
-@keyframes entrada{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-</style>
-
+    /* ANIMACIONES */
+    @keyframes entrada {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-
-<div class="contenido">
-
-<h1>🌿Plantamos</h1>
-
-<p>
-Promover el cuidado de las plantas y crear conciencia
-sobre la importancia de proteger los ecosistemas terrestres,
-la biodiversidad y el medio ambiente.
-</p>
-
-</div>
-
-</header>
-
-<section class="intro">
-
-<h2>🌎 ¿Por qué realizamos esta página?</h2>
-
-<p>
-Creamos esta página para informar y concientizar sobre la importancia
-de las plantas y el impacto ambiental que enfrentan debido
-a la contaminación, incendios forestales, deforestación y cambio climático.
-Las plantas son fundamentales para la vida porque producen oxígeno,
-ayudan a regular el clima, mantienen el equilibrio ecológico y muchas
-poseen propiedades medicinales utilizadas desde hace cientos de años.
-Nuestro objetivo es motivar a las personas a cuidar el planeta y valorar
-la importancia de proteger la naturaleza.
-</p>
-
-</section>
-
-<h1 class="titulo">🌱 Flores, Plantas y Arboles</h1>
-
-
-<div class="contenedor" id="contenedor"></div>
-
-<div class="contenedor" id="contenedor"></div>
-
-<div class="contenedor" id="contenedor"></div>
-
-<!-- MODAL -->
-
-<div class="modal" id="modal">
-
-<div class="modal-contenido">
-
-<img id="imagen">
-
-<div class="info">
-
-<h2 id="nombre"></h2>
-
-<h3>🌿 Importancia</h3>
-<p id="importancia"></p>
-
-<h3>⚠ Riesgos</h3>
-<p id="riesgos"></p>
-
-<h3>💀 Consecuencias</h3>
-<p id="consecuencias"></p>
-
-<h3>💡 Soluciones</h3>
-<p id="soluciones"></p>
-
-<h3>🤝 ¿Cómo ayudar?</h3>
-<p id="ayuda"></p>
-
-<button onclick="cerrarModal()">Cerrar</button>
-
-</div>
-
-</div>
-
-</div>
-
-<footer>
-
-<h2>🌍 “Proteger las plantas es proteger el futuro de la humanidad.”</h2>
-<P> Equipo: Ricardo Baez Garibaldi, Jonathan Eliuth Franco Sanchez,Andrea isabel Perez Cruz, Benjamin Humberto Escobedo Torres, Ximena Sarahi Quiñones Castillo, Dayra Valeria Antonio Hernandez  </P>
-
-
-
-</footer>
-
-<script>
-
-const plantas = [
-
-{
-nombre:"Aloe Vera",
-imagen:"https://s10.s3c.es/imag/_v0/2121x1157/1/e/8/Por-que-tener-una-planta-aloe-vera-en-casa.jpg",
-
-importancia:"El Aloe Vera es una de las plantas medicinales más utilizadas en el mundo debido a sus propiedades curativas y regenerativas. Desde hace muchos años ha sido utilizada para tratar quemaduras, heridas, irritaciones en la piel y problemas digestivos. Además, esta planta contiene vitaminas, minerales y antioxidantes que ayudan a mejorar la salud.",
-
-riesgos:"El Aloe Vera se ve afectado por la contaminación, el cambio climático y la destrucción de áreas verdes. También muchas personas extraen esta planta sin volver a sembrarla.",
-
-consecuencias:"La pérdida de esta planta afectaría la medicina natural y disminuiría recursos utilizados para productos medicinales y cosméticos.",
-
-soluciones:"Promover el cultivo responsable, proteger áreas verdes y reducir la contaminación ambiental.",
-
-ayuda:"Podemos ayudar sembrando Aloe Vera en casa, reutilizando agua y cuidando la naturaleza."
-},
-
-{
-nombre:"Manzanilla",
-imagen:"https://cloudfront-us-east-1.images.arcpublishing.com/infobae/TTXFSRCO6FBE5NUD6FSEAIAZ2I.png",
-
-importancia:"La manzanilla es una planta conocida por sus propiedades relajantes y digestivas. Muchas personas la utilizan para aliviar dolores estomacales, ansiedad y estrés. Además, ayuda a atraer insectos polinizadores importantes para el ecosistema.",
-
-riesgos:"Los pesticidas, la contaminación del suelo y el cambio climático afectan el crecimiento de esta planta.",
-
-consecuencias:"La desaparición de la manzanilla afectaría tanto a la medicina natural como a los insectos que dependen de ella.",
-
-soluciones:"Reducir químicos dañinos y promover cultivos ecológicos.",
-
-ayuda:"Sembrar flores y cuidar jardines ayuda a proteger esta especie."
-},
-
-{
-nombre:"Romero",
-imagen:"https://cdn.pixabay.com/photo/2015/12/13/00/11/rosemary-1090419_640.jpg",
-
-importancia:"El romero es una planta aromática utilizada para mejorar la memoria, aliviar dolores musculares y fortalecer la circulación sanguínea. También es muy utilizada en la cocina y ayuda a atraer insectos beneficiosos.",
-
-riesgos:"La contaminación y el uso excesivo de químicos afectan su crecimiento.",
-
-consecuencias:"La pérdida del romero disminuiría la biodiversidad y afectaría ecosistemas.",
-
-soluciones:"Promover cultivos ecológicos y reducir contaminación.",
-
-ayuda:"Sembrar plantas aromáticas y cuidar áreas verdes."
-},
-
-{
-nombre:"Menta",
-imagen:"https://media.admagazine.com/photos/618a61cc51ab72df0a764124/3:2/w_3024,h_2016,c_limit/83664.jpg",
-
-importancia:"La menta es utilizada para aliviar problemas digestivos y respiratorios. También ayuda a reducir el estrés gracias a su aroma refrescante.",
-
-riesgos:"La contaminación del suelo afecta la calidad de esta planta medicinal.",
-
-consecuencias:"La pérdida de plantas medicinales afecta alternativas naturales para la salud.",
-
-soluciones:"Usar agricultura sostenible y evitar químicos dañinos.",
-
-ayuda:"Cultivar plantas medicinales y cuidar el agua."
-},
-
-{
-nombre:"Eucalipto",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq1QBVEkllucpuEIj8ux6vjWnFddGBAHujpQ&s",
-
-importancia:"El eucalipto es conocido por ayudar a aliviar problemas respiratorios y producir grandes cantidades de oxígeno.",
-
-riesgos:"Los incendios forestales y la tala excesiva afectan los bosques de eucalipto.",
-
-consecuencias:"La pérdida de árboles aumenta la contaminación y afecta hábitats naturales.",
-
-soluciones:"Reforestar áreas dañadas y proteger bosques.",
-
-ayuda:"Evitar incendios forestales y plantar árboles."
-},
-
-{
-nombre:"Gerbera",
-imagen:"https://cdn0.ecologiaverde.com/es/posts/4/9/0/caracteristicas_de_la_planta_gerbera_2094_0_600.jpg",
-
-importancia:"La gerbera es una flor muy importante porque ayuda a purificar el aire y aporta belleza natural al ecosistema.",
-
-riesgos:"La contaminación y pesticidas dañan esta flor.",
-
-consecuencias:"La pérdida de flores afecta insectos polinizadores y biodiversidad.",
-
-soluciones:"Reducir contaminación y proteger jardines.",
-
-ayuda:"Sembrar flores y cuidar polinizadores."
-},
-
-{
-nombre:"Árnica",
-imagen:"https://www.lasaponaria.es/img/cms/arnica-3.jpg",
-
-importancia:"La árnica es utilizada para aliviar golpes, inflamaciones y dolores musculares gracias a sus propiedades medicinales.",
-
-riesgos:"La explotación excesiva y destrucción de ecosistemas afectan esta planta.",
-
-consecuencias:"La pérdida de árnica disminuiría recursos medicinales naturales.",
-
-soluciones:"Proteger áreas naturales y evitar sobreexplotación.",
-
-ayuda:"Cuidar ecosistemas y sembrar plantas medicinales."
-},
-
-{
-nombre:"Girasol",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBCPpKf92u-FP6_iniNI3mwGQ7N8u8itq2Hg&s",
-
-importancia:"El girasol es importante porque sirve de alimento para aves e insectos polinizadores. Además, ayuda a mejorar el suelo y aporta belleza natural.",
-
-riesgos:"La sequía y contaminación afectan su crecimiento.",
-
-consecuencias:"La pérdida de girasoles afecta polinizadores importantes para el ecosistema.",
-
-soluciones:"Cuidar cultivos y ahorrar agua.",
-
-ayuda:"Sembrar flores y proteger insectos."
-},
-
-{
-nombre:"Palmera",
-imagen:"https://cdn.homedepot.com.mx/productos/817277/817277-d.jpg",
-
-importancia:"Las palmeras son fundamentales en ecosistemas tropicales porque proporcionan alimento y refugio para muchos animales.",
-
-riesgos:"La tala excesiva y urbanización afectan estas plantas.",
-
-consecuencias:"La pérdida de palmeras disminuye biodiversidad y afecta ecosistemas tropicales.",
-
-soluciones:"Conservar áreas naturales y reducir tala.",
-
-ayuda:"Respetar ecosistemas tropicales."
-},
-
-{
-nombre:"Lavanda",
-imagen:"https://upload.wikimedia.org/wikipedia/commons/7/7e/Single_lavender_flower02.jpg",
-
-importancia:"La lavanda ayuda a reducir estrés y ansiedad gracias a su aroma relajante. También atrae abejas y otros polinizadores importantes.",
-
-riesgos:"Los pesticidas afectan a los insectos polinizadores.",
-
-consecuencias:"La disminución de abejas afecta la producción de plantas y alimentos.",
-
-soluciones:"Reducir químicos dañinos y proteger polinizadores.",
-
-ayuda:"Sembrar flores y cuidar la biodiversidad."
-}
-,
-
-{
-nombre:"Bugambilia",
-imagen:"https://www.cocinadelirante.com/800x600/filters:format(webp):quality(75)/sites/default/files/images/2019/05/como-cuidar-bugambilias-en-maceta.jpg",
-importancia:"La bugambilia es una planta ornamental muy apreciada por sus coloridas flores. Ayuda a embellecer jardines, atraer abejas y mariposas, además de proporcionar sombra y refugio para pequeños animales.",
-riesgos:"La urbanización, la contaminación y la falta de cuidados disminuyen su presencia.",
-consecuencias:"Se reduce la diversidad de flores que alimentan a los polinizadores.",
-soluciones:"Sembrar bugambilias en jardines y evitar el uso excesivo de pesticidas.",
-ayuda:"Regarla adecuadamente y proteger las áreas verdes."
-},
-
-{
-nombre:"Albahaca",
-imagen:"https://lyncott.mx/wp-content/uploads/2016/08/albahacabelleza-20.jpg",
-importancia:"La albahaca es utilizada en la cocina y la medicina natural. Posee propiedades antibacterianas y ayuda a atraer polinizadores importantes.",
-riesgos:"La contaminación del suelo y el uso de pesticidas afectan su desarrollo.",
-consecuencias:"Disminuye la disponibilidad de plantas aromáticas y medicinales.",
-soluciones:"Promover huertos urbanos y agricultura ecológica.",
-ayuda:"Cultivarla en casa y evitar químicos."
-},
-
-{
-nombre:"Tomillo",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw51NdsrXKhut54s_9rSjOM8UfczYymwZx4Lh56bJISvA7hp8-VNXa0UiK&s=10",
-importancia:"El tomillo es una planta medicinal utilizada para aliviar enfermedades respiratorias y fortalecer el sistema inmunológico.",
-riesgos:"La sobreexplotación y el cambio climático afectan sus poblaciones.",
-consecuencias:"Se pierde una importante planta medicinal.",
-soluciones:"Cultivarlo de manera sostenible.",
-ayuda:"Consumir productos provenientes de cultivos responsables."
-},
-
-{
-nombre:"Oregano",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYcFvJKfacQ8wjOAl6XaARWGWdov4AW5heXjvqCEn67n4PzcYjDOmAiYLtfx7-k-NYWA7mjaQdxmV6WlV-dln-OwAtEDK-eO5d552s4Q&s=10",
-importancia:"El orégano es una planta aromática muy utilizada en la cocina y con propiedades antioxidantes.",
-riesgos:"La contaminación y el uso excesivo de fertilizantes.",
-consecuencias:"Disminuye su producción y calidad.",
-soluciones:"Promover cultivos orgánicos.",
-ayuda:"Cultivar orégano en casa."
-},
-
-{
-nombre:"Salvia",
-imagen:"https://i0.wp.com/www.florestore.com/flores-a-domicilio/wp-content/uploads/2018/09/cuidados-de-la-salvia-florestore-portada.jpg?fit=1502%2C1002&ssl=1",
-importancia:"La salvia ayuda en tratamientos naturales para problemas digestivos e inflamaciones.",
-riesgos:"La destrucción de hábitats naturales.",
-consecuencias:"Pérdida de biodiversidad.",
-soluciones:"Conservar ecosistemas.",
-ayuda:"Proteger áreas naturales."
-},
-
-{
-nombre:"Ruda",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkmWwfe61h2_80mj2BYQkXvBuMLe_xb3O2rlpgf2HM0p1DUPiiNm9ww_rQrq55NbIKxZcxVmmDFSybnEG0vj_HufSRwURd43f8rwY6gg&s=10",
-importancia:"La ruda ha sido utilizada tradicionalmente como planta medicinal y repelente natural de insectos.",
-riesgos:"La extracción excesiva.",
-consecuencias:"Reducción de poblaciones silvestres.",
-soluciones:"Cultivarla responsablemente.",
-ayuda:"Evitar arrancarla del campo."
-},
-
-{
-nombre:"Diente de León",
-imagen:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Schulterbachtal_L%C3%B6wenzahn_Samenstand-20200517-RM-111527.jpg/250px-Schulterbachtal_L%C3%B6wenzahn_Samenstand-20200517-RM-111527.jpg",
-importancia:"Es una planta medicinal que mejora la digestión y alimenta a numerosos polinizadores.",
-riesgos:"El uso de herbicidas.",
-consecuencias:"Disminuyen las fuentes de alimento para las abejas.",
-soluciones:"Reducir herbicidas.",
-ayuda:"Permitir que crezca en jardines."
-},
-
-{
-nombre:"Caléndula",
-imagen:"https://www.florescastillon.com/wp-content/uploads/2024/08/calendula.jpg",
-importancia:"La caléndula posee propiedades antiinflamatorias y cicatrizantes.",
-riesgos:"Contaminación y pérdida de suelos fértiles.",
-consecuencias:"Menor disponibilidad para la medicina natural.",
-soluciones:"Promover su cultivo.",
-ayuda:"Sembrarla en casa."
-},
-
-{
-nombre:"Hierbabuena",
-imagen:"https://media.admagazine.com/photos/68bf8e2f68f3b79e26ea3729/master/w_1600%2Cc_limit/hierbabuena-caracter%25C3%25ADsticas.jpg",
-importancia:"Muy utilizada para aliviar problemas digestivos y respiratorios.",
-riesgos:"La contaminación del agua y del suelo.",
-consecuencias:"Pérdida de plantas medicinales.",
-soluciones:"Cuidar los recursos naturales.",
-ayuda:"Cultivarla en macetas."
-},
-
-{
-nombre:"Jengibre",
-imagen:"https://actualfruveg.com/wp-content/uploads/2020/11/ginger-plant-500x500-1-400x400.jpg",
-importancia:"El jengibre fortalece el sistema inmunológico y ayuda a aliviar enfermedades respiratorias.",
-riesgos:"Cambio climático y agricultura intensiva.",
-consecuencias:"Disminuye su producción.",
-soluciones:"Agricultura sostenible.",
-ayuda:"Consumir productos responsables."
-},
-
-{
-nombre:"cúrcuma",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpMFcby5ApqfNJGAfOvSyPo-2KdPni-M1abYhT693N5IRO2KzCUjRy10HmwKN6fkonu7jTT34G04fH_hsQ8FBpdH3JKiJ4Z2it9PaYd8bv3g&s=10",
-importancia:"La cúrcuma tiene propiedades antioxidantes y antiinflamatorias.",
-riesgos:"Sobreexplotación agrícola.",
-consecuencias:"Reducción de su producción.",
-soluciones:"Cultivos responsables.",
-ayuda:"Apoyar la agricultura ecológica."
-},
-
-{
-nombre:"Neem",
-imagen:"https://upload.wikimedia.org/wikipedia/commons/2/20/Neem_%28Azadirachta_indica%29_in_Hyderabad_W_IMG_6976.jpg",
-importancia:"El neem se utiliza como insecticida natural y posee propiedades medicinales.",
-riesgos:"Deforestación.",
-consecuencias:"Pérdida de biodiversidad.",
-soluciones:"Reforestar.",
-ayuda:"Plantar árboles."
-},
-
-{
-nombre:"Cedro",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTuRcWBaoGfsHCehuF7ZRq6I0Pma9JaK03cJIJbNRDg&s=10",
-importancia:"Árbol que ayuda a producir oxígeno y conservar los suelos.",
-riesgos:"Tala ilegal.",
-consecuencias:"Pérdida de bosques.",
-soluciones:"Proteger áreas forestales.",
-ayuda:"Evitar comprar madera ilegal."
-},
-
-{
-nombre:"Pino",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ3F8Kk6OuzC-bK_8vj5Saa2NaqYvHayTWr9pkatdk1cRdgGHuhJwqWZI&s=10",
-importancia:"Produce oxígeno y sirve de hogar para muchas especies.",
-riesgos:"Incendios forestales.",
-consecuencias:"Destrucción de ecosistemas.",
-soluciones:"Prevención de incendios.",
-ayuda:"No tirar colillas ni hacer fogatas."
-},
-
-{
-nombre:"Encino",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGbkf97jVuXWHtiGxMojKWqyrfxImfBwgMJLpNjrjbEQ&s=10",
-importancia:"Árbol de gran importancia para la fauna y el equilibrio ecológico.",
-riesgos:"Deforestación.",
-consecuencias:"Pérdida de hábitats.",
-soluciones:"Reforestación.",
-ayuda:"Participar en campañas ambientales."
-},
-
-{
-nombre:"Jacaranda",
-imagen:"https://jardinjaponespunta.com/wp-content/uploads/2024/11/OIP-1.jpeg",
-importancia:"Embellece ciudades y atrae polinizadores.",
-riesgos:"Contaminación urbana.",
-consecuencias:"Menos áreas verdes.",
-soluciones:"Plantar más árboles.",
-ayuda:"Cuidar parques."
-},
-
-{
-nombre:"Nopal",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYYZXNfEQSds0XpYZZYo-YEYNEBvWTCQMCUVko2VvuMve06hQrIGJPAqZi&s=10g",
-importancia:"Es alimento, medicina natural y ayuda a conservar suelos áridos.",
-riesgos:"Cambio climático.",
-consecuencias:"Afectación de ecosistemas desérticos.",
-soluciones:"Conservar zonas naturales.",
-ayuda:"Evitar destruir la vegetación."
-},
-
-{
-nombre:"Agave",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_n4xOE5lhSo_g-zeaxQ-XNTUcZAPVrzL_OTgl2pacw&s=10",
-importancia:"Es importante para la producción de alimentos y bebidas, además de alimentar murciélagos polinizadores.",
-riesgos:"Sobreexplotación.",
-consecuencias:"Disminución de la biodiversidad.",
-soluciones:"Cultivo responsable.",
-ayuda:"Apoyar productores sostenibles."
-},
-
-{
-nombre:"Bambu",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbcrXsJ1cGrsR5VJ-acGDBYzwOFoMmfsBgQnhoDbmAZA&s=10",
-importancia:"Crece rápidamente, captura dióxido de carbono y ayuda a evitar la erosión.",
-riesgos:"Deforestación.",
-consecuencias:"Pérdida de hábitats.",
-soluciones:"Reforestación.",
-ayuda:"Plantar bambú."
-},
-
-{
-nombre:"Moringa",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlGLR9BfyQFAnBwODdKBvjVuhe67DVEU4Hplh41RNLZ2buRVR_whEL9T8&s=10",
-importancia:"Posee un alto valor nutricional y medicinal.",
-riesgos:"Cambio climático.",
-consecuencias:"Disminuye su producción.",
-soluciones:"Cultivos sostenibles.",
-ayuda:"Promover su conservación."
-},
-
-{
-nombre:"Valeriana",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTyELATNtGHQF2KBqX1fdGwldfbERfikAiAyjZq7fuxA&s=10",
-importancia:"Ayuda a combatir el insomnio y la ansiedad.",
-riesgos:"Sobreexplotación.",
-consecuencias:"Escasez de la planta.",
-soluciones:"Cultivo controlado.",
-ayuda:"Consumir productos certificados."
-},
-
-{
-nombre:"Jazmín",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_CNhwPvf9jr2Q9ndDOlYwKzn_AUphCvXf84oaaNMwGk_ezSED4aVUI7k&s=10",
-importancia:"Aporta belleza y atrae polinizadores.",
-riesgos:"Contaminación.",
-consecuencias:"Menos flores para insectos.",
-soluciones:"Reducir pesticidas.",
-ayuda:"Sembrar flores."
-},
-
-{
-nombre:"Magnolia",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-6iToJNX5ikR-yqkvxOOyyLpssfAhu5tcnHZwAGh1uA&s=10",
-importancia:"Árbol ornamental que ayuda a mantener la biodiversidad.",
-riesgos:"Deforestación.",
-consecuencias:"Pérdida de árboles nativos.",
-soluciones:"Conservar bosques.",
-ayuda:"Participar en reforestaciones."
-},
-
-{
-nombre:"Orquídea",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUqw3Lb1yMdrucWKHqoAO9R96pLNfFUuJfZZw_v-W_SQ&s=10",
-importancia:"Las orquídeas son fundamentales para la biodiversidad y poseen gran valor ecológico.",
-riesgos:"Comercio ilegal y destrucción de hábitats.",
-consecuencias:"Muchas especies están en peligro de extinción.",
-soluciones:"Proteger bosques y evitar el comercio ilegal.",
-ayuda:"Comprar únicamente plantas cultivadas legalmente."
-},
-
-{
-nombre:"Sauce",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsn0SCgzrFZpk5k9Je8cZ_9syKzRZIiJtXxfxgzRID-A&s=10",
-importancia:"El sauce ayuda a proteger ríos y su corteza contiene compuestos medicinales.",
-riesgos:"Contaminación de ríos y tala.",
-consecuencias:"Erosión de las riberas.",
-soluciones:"Conservar cuerpos de agua.",
-ayuda:"No contaminar ríos."
-}
-
-,
-
-{
-nombre:"Rosal",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6YLxBGhHMHhGn-ZGUb7ENxuO-bxPsfw2AluSrvwX8-vsXJM6X4FMTR3U&s=10",
-importancia:"El rosal produce flores muy apreciadas por su belleza y aroma. Además, alimenta a abejas y mariposas.",
-riesgos:"Uso excesivo de pesticidas y enfermedades.",
-consecuencias:"Disminuyen los polinizadores.",
-soluciones:"Usar fertilizantes orgánicos.",
-ayuda:"Sembrar rosales y cuidar las flores."
-},
-
-{
-nombre:"Margarita",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKnGjhUdTbmXtAi2LfUqxPP4Xu9pn0SbKTkjgSc9VKXA&s=10",
-importancia:"Ayuda a los insectos polinizadores y embellece jardines.",
-riesgos:"Contaminación y herbicidas.",
-consecuencias:"Pérdida de biodiversidad.",
-soluciones:"Reducir químicos.",
-ayuda:"Cultivar flores."
-},
-
-{
-nombre:"Clavel",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbedEItU551iHUWp2WtWYEx4pAuV4LplEYzfh40mZZdzKJLh6IAEvqhPY&s=10",
-importancia:"Flor ornamental de gran importancia económica.",
-riesgos:"Plagas.",
-consecuencias:"Menor producción floral.",
-soluciones:"Control biológico.",
-ayuda:"Cuidar jardines."
-},
-
-{
-nombre:"Tulipán",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE78P8tLndagvfGvu75wVb8tfc6h54PRnt6KoxcJbru_LWwIRF-4oUDBw&s=10",
-importancia:"Flor muy apreciada que atrae insectos benéficos.",
-riesgos:"Cambio climático.",
-consecuencias:"Menor floración.",
-soluciones:"Proteger jardines.",
-ayuda:"No cortar flores silvestres."
-},
-
-{
-nombre:"Lavandín",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzgpUo_-zhwI7m-ain3jflVTJZRhyUkgey4c4_Fq3xof4SGEgGf37nJWh7&s=10",
-importancia:"Produce aceites esenciales y atrae abejas.",
-riesgos:"Sequías.",
-consecuencias:"Menos producción de flores.",
-soluciones:"Uso responsable del agua.",
-ayuda:"Cultivar plantas aromáticas."
-},
-
-{
-nombre:"Hierba Limón",
-imagen:"https://static.bainet.es/clip/1630b54f-3a0d-4aa5-9cef-986096acf5b5_source-aspect-ratio_1600w_0.jpg",
-importancia:"Muy utilizada para infusiones y medicina natural.",
-riesgos:"Contaminación del suelo.",
-consecuencias:"Disminuye su calidad.",
-soluciones:"Agricultura ecológica.",
-ayuda:"Cultivarla en casa."
-},
-
-{
-nombre:"Anís",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTImtICSeSCvGzCO7IVacAlTozY6GoBCg-bWVzWEqsDAWC7SmYFX-ioqcor&s=10g",
-importancia:"Favorece la digestión y tiene usos medicinales.",
-riesgos:"Sobreexplotación.",
-consecuencias:"Escasez.",
-soluciones:"Cultivo responsable.",
-ayuda:"Consumir productos certificados."
-},
-
-{
-
-nombre:"Ceiba",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyphX-HPSoeUl5Hw6chxGKn1KaCPRlDDdFiQ6_Zbm00g&s=10",
-importancia:"La ceiba es un árbol enorme que almacena carbono y sirve de refugio para aves, insectos y mamíferos.",
-riesgos:"La tala y la expansión urbana.",
-consecuencias:"Pérdida de biodiversidad.",
-soluciones:"Proteger bosques tropicales.",
-ayuda:"Participar en campañas de reforestación."
-},
-
-{
-nombre:"Ahuehuete",
-imagen:"https://cdn.milenio.com/uploads/media/2022/05/10/ahuehuete-especial_0_22_500_311.jpg",
-importancia:"Es el árbol nacional de México y ayuda a conservar los ecosistemas ribereños.",
-riesgos:"Contaminación de ríos.",
-consecuencias:"Disminución de ejemplares históricos.",
-soluciones:"Cuidar las fuentes de agua.",
-ayuda:"No contaminar ríos."
-},
-
-{
-nombre:"Ficus",
-imagen:"https://illiciplants.com/wp-content/uploads/2022/12/ficus-nitida-ejemplar-1.jpg",
-importancia:"Purifica el aire y proporciona sombra.",
-riesgos:"Poda excesiva.",
-consecuencias:"Menos áreas verdes.",
-soluciones:"Dar mantenimiento adecuado.",
-ayuda:"Plantar árboles urbanos."
-},
-
-{
-nombre:"Olivo",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkvesUfG6aSZPa5Xa3ddPc_jlpiON9BmrBfs6ngfHJqHx9Unzsitd96d0&s=10",
-importancia:"Produce aceitunas y ayuda a conservar el suelo.",
-riesgos:"Sequías.",
-consecuencias:"Disminución de cosechas.",
-soluciones:"Uso eficiente del agua.",
-ayuda:"Apoyar agricultura sostenible."
-},
-
-{
-nombre:"Ciprés",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQdBjWrFLUsqch6zOMkjDHnuLtbON79awr1bcHKxXRpw&s=10g",
-importancia:"Protege el suelo y mejora la calidad del aire.",
-riesgos:"Incendios forestales.",
-consecuencias:"Pérdida de bosques.",
-soluciones:"Prevención de incendios.",
-ayuda:"No hacer fogatas."
-},
-
-{
-nombre:"Roble",
-imagen:"https://mejorconsalud.as.com/wp-content/uploads/2022/03/arbol-roble.jpg ",
-importancia:"Alberga cientos de especies de animales.",
-riesgos:"Deforestación.",
-consecuencias:"Pérdida de hábitats.",
-soluciones:"Conservar bosques.",
-ayuda:"Participar en reforestaciones."
-},
-
-{
-nombre:"Álamo",
-imagen:"https://www.uanl.mx/wp-content/uploads/2023/12/Alamo-Planta.jpg",
-importancia:"Ayuda a evitar la erosión de los suelos.",
-riesgos:"Contaminación de ríos.",
-consecuencias:"Desgaste del suelo.",
-soluciones:"Cuidar zonas ribereñas.",
-ayuda:"No tirar basura."
-},
-
-{
-nombre:"Nogal",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1iZ8SO1xM95ADnm512uZkxNgzveojZ7UojVoGmoXr60501eY4T-KdTZj&s=10  ",
-importancia:"Produce nueces y proporciona alimento a diversas especies.",
-riesgos:"Cambio climático.",
-consecuencias:"Reducción de producción.",
-soluciones:"Agricultura responsable.",
-ayuda:"Consumir productos locales."
-},
-
-{
-nombre:"Limonero",
-imagen:"https://www.infobae.com/new-resizer/JEx63Jd4oTBuYFVge4JZ1NZrG7k=/arc-anglerfish-arc2-prod-infobae/public/MY75DGYALRGNLFGK3JAL4ILWOA.jpg",
-importancia:"Produce frutos ricos en vitamina C.",
-riesgos:"Plagas.",
-consecuencias:"Pérdida de cultivos.",
-soluciones:"Control biológico.",
-ayuda:"Cuidar árboles frutales."
-},
-
-{
-nombre:"Naranjo",
-imagen:"https://www.frutamare.com/wp-content/uploads/2019/02/naranjo1.jpg   ",
-importancia:"Produce frutos y favorece la biodiversidad.",
-riesgos:"Enfermedades.",
-consecuencias:"Menor producción.",
-soluciones:"Buenas prácticas agrícolas.",
-ayuda:"Evitar pesticidas excesivos."
-},
-
-{
-nombre:"Mandarino",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBecaNHB-NHASmk9I2PYpWM6Q8gKApcqnQREWbhSReDA&s=10",
-importancia:"Produce frutos nutritivos.",
-riesgos:"Sequías.",
-consecuencias:"Disminuye la cosecha.",
-soluciones:"Riego responsable.",
-ayuda:"Ahorrar agua."
-},
-
-{
-nombre:"Granado",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpKIYO9oMtnwTK-H21vAOakgCAs4kY0WnakU0Aovlk5PSNTueMqn7eac6H&s=10   ",
-importancia:"Produce granadas con propiedades antioxidantes.",
-riesgos:"Cambio climático.",
-consecuencias:"Menos frutos.",
-soluciones:"Proteger cultivos.",
-ayuda:"Consumir productos locales."
-},
-
-{
-nombre:"Cerezo",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPHPtLJq5iKL8EylOyZItUab_Ho45AEfKBNaDNnJsRcw&s=10",
-importancia:"Aporta belleza y alimento para polinizadores.",
-riesgos:"Heladas extremas.",
-consecuencias:"Pérdida de flores.",
-soluciones:"Cuidar áreas verdes.",
-ayuda:"Sembrar árboles."
-},
-
-{
-nombre:"Camelia",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXyT4jrgI7FMHC8s7VxL5Gwtvx3WUddLnrjlDdIz4vOA&s=10",
-importancia:"Flor ornamental que favorece la biodiversidad.",
-riesgos:"Contaminación.",
-consecuencias:"Disminuyen los polinizadores.",
-soluciones:"Reducir pesticidas.",
-ayuda:"Sembrar flores."
-},
-
-{
-nombre:"Hibisco",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyI5A8Fd1R-WIcBa1xKo9mNHf3fktJB4bYlPzEql4UCA&s=10",
-importancia:"Atrae colibríes y mariposas.",
-riesgos:"Uso de químicos.",
-consecuencias:"Menos flores.",
-soluciones:"Cultivo ecológico.",
-ayuda:"Cuidar jardines."
-},
-
-
-
-{
-nombre:"Cactus",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMY3POlmtddmrdlIWRpr4pVD1Lv0T3hccWFjbkVd5VA&s=10",
-importancia:"Conserva agua y da refugio a animales del desierto.",
-riesgos:"Extracción ilegal.",
-consecuencias:"Pérdida de especies.",
-soluciones:"Proteger desiertos.",
-ayuda:"No comprar especies extraídas."
-},
-
-{
-nombre:"Biznaga",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-52cSObVq7Mz_WGG9c1oS_nwXtW5g3o7KkYCQ-C4yUQ&s=10",
-importancia:"Es una planta emblemática de México.",
-riesgos:"Comercio ilegal.",
-consecuencias:"Peligro de extinción.",
-soluciones:"Proteger especies.",
-ayuda:"No comprar plantas silvestres."
-},
-
-{
-nombre:"Palo Verde",
-imagen:"https://static.wixstatic.com/media/20068f_61521e2459c14d8fa64506711b8c24a1~mv2.jpeg/v1/fill/w_480,h_426,al_c,lg_1,q_80,enc_avif,quality_auto/20068f_61521e2459c14d8fa64506711b8c24a1~mv2.jpeg",
-importancia:"Resiste la sequía y protege el suelo.",
-riesgos:"Cambio climático.",
-consecuencias:"Pérdida de vegetación.",
-soluciones:"Conservar ecosistemas.",
-ayuda:"Reforestar."
-},
-
-{
-nombre:"Sauco",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJEHAsylRzg9MSRwOnVEfUquG6t3s_uNVPVrHNUcR_Vg&s=10",
-importancia:"Sus flores y frutos son utilizados en medicina tradicional.",
-riesgos:"Contaminación.",
-consecuencias:"Disminución de ejemplares.",
-soluciones:"Conservar hábitats.",
-ayuda:"Sembrar árboles."
-},
-
-{
-nombre:"Guayabo",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2veJrnkfsXScX8BszGGkW1G5hAsKGlwXITyloEtIyDMa3296r91jCWrE&s=10",
-importancia:"Produce frutos ricos en vitamina C.",
-riesgos:"Plagas.",
-consecuencias:"Menor producción.",
-soluciones:"Control biológico.",
-ayuda:"Cuidar árboles frutales."
-},
-
-{
-nombre:"Papayo",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrnJkX-9ySFGG8djSikr5Nohylb5IVE-sOnEUHf2Dofg&s=10",
-importancia:"Produce frutos nutritivos y medicinales.",
-riesgos:"Enfermedades.",
-consecuencias:"Pérdida de cultivos.",
-soluciones:"Agricultura responsable.",
-ayuda:"Consumir productos locales."
-},
-
-{
-nombre:"Arbol de Mango",
-imagen:"https://e01-elmundo.uecdn.es/assets/multimedia/imagenes/2025/06/19/17503508330846.jpg",
-importancia:"Produce frutos y da sombra a muchas especies.",
-riesgos:"Deforestación.",
-consecuencias:"Disminución de árboles frutales.",
-soluciones:"Reforestación.",
-ayuda:"Plantar árboles."
-},
-
-{
-nombre:"Guamúchil",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp7WMfTBFpzZeR84YcA1-jhmlviKnu53HQO7RUD8J-HzQlxZFMsWycYqg&s=10",
-importancia:"Árbol mexicano que brinda alimento a aves y otros animales.",
-riesgos:"Urbanización.",
-consecuencias:"Pérdida de fauna.",
-soluciones:"Conservar áreas verdes.",
-ayuda:"Sembrar especies nativas."
-
-
-}
-
-,
-{
-nombre:"Azalea",
-imagen:"https://www.elicriso.it/es/como_cultivar/azalea/azalea_P1030534.jpg ",
-importancia:"Es una planta ornamental muy apreciada por sus flores coloridas y embellece jardines.",
-riesgos:"Contaminación y plagas.",
-consecuencias:"Disminución de áreas verdes.",
-soluciones:"Brindar mantenimiento adecuado.",
-ayuda:"Regarla y protegerla de plagas."
-},
-
-{
-nombre:"Gardenia",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX3s9vDL1afJ7P450Xx5c75Nla-vZEeuYh3cCykYD2qw&s=10",
-importancia:"Produce flores aromáticas que embellecen parques y jardines.",
-riesgos:"Plagas y contaminación.",
-consecuencias:"Pérdida de plantas ornamentales.",
-soluciones:"Cuidados constantes.",
-ayuda:"Evitar el uso excesivo de pesticidas."
-},
-
-
-{
-nombre:"Hortensia",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwPzzIkzCboIABn4Jcp9bzV7cAYkgWA9T8MJ1XOdWoWg&s=10",
-importancia:"Es muy utilizada para decorar jardines por sus grandes flores.",
-riesgos:"Sequías.",
-consecuencias:"Pérdida de ejemplares.",
-soluciones:"Riego adecuado.",
-ayuda:"Ahorrar agua."
-},
-
-{
-nombre:"Begonia",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkaH5Gr9790r918dw5yNzp5CshXdT5_rTsAUHriG-yPA&s=10",
-importancia:"Planta ornamental de gran variedad de colores.",
-riesgos:"Plagas.",
-consecuencias:"Disminuye su crecimiento.",
-soluciones:"Mantenimiento constante.",
-ayuda:"Cultivarla en casa."
-},
-
-{
-nombre:"Petunia",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMhXqjTxLVpr5Y61R1TFyUAlF-e0j1sYW9Gwj2DzIgKA&s=10g",
-importancia:"Atrae abejas y mariposas, favoreciendo la polinización.",
-riesgos:"Contaminación.",
-consecuencias:"Menos polinizadores.",
-soluciones:"Reducir pesticidas.",
-ayuda:"Sembrar flores."
-},
-
-{
-nombre:"Pensamiento",
-imagen:"https://framerusercontent.com/images/yk8auBgGBILmUX1NCVofpYJQO8.jpg?width=2245&height=1587",
-importancia:"Flor ornamental muy utilizada en parques y jardines.",
-riesgos:"Cambios extremos de temperatura.",
-consecuencias:"Menor floración.",
-soluciones:"Cuidados adecuados.",
-ayuda:"Regarla correctamente."
-},
-
-{
-nombre:"Lirio",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3YpFEU4QpkZeCy5okGQ-0sl4TKi2kMHvCF6YnD_i6QA&s=10",
-importancia:"Flor ornamental muy apreciada por su belleza.",
-riesgos:"Plagas.",
-consecuencias:"Pérdida de flores.",
-soluciones:"Control natural de plagas.",
-ayuda:"Cuidar jardines."
-},
-
-
-
-{
-nombre:"Narciso",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82dkM1BlvUHAgHiq-q6mLEBfwcWHWCkuHxcJlVeKA-g&s=10",
-importancia:"Embellece jardines y parques.",
-riesgos:"Contaminación.",
-consecuencias:"Menor biodiversidad.",
-soluciones:"Conservar áreas verdes.",
-ayuda:"Sembrar flores."
-},
-
-{
-nombre:"Violeta",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQriJI6CqtL7EYSI_aIMiUuPQKYSj7d6H0TwckNSIKX-g&s=10",
-importancia:"Planta ornamental y medicinal muy conocida.",
-riesgos:"Pérdida de hábitat.",
-consecuencias:"Menos flores.",
-soluciones:"Cultivo doméstico.",
-ayuda:"Sembrarla en macetas."
-},
-
-{
-nombre:"Helecho",
-imagen:"https://dejardines.com/wp-content/uploads/2-HR-Helechos-herbaceos-011.jpg",
-importancia:"Purifica el aire y mantiene la humedad.",
-riesgos:"Deforestación.",
-consecuencias:"Pérdida de biodiversidad.",
-soluciones:"Conservar bosques.",
-ayuda:"No extraerlos de la naturaleza."
-},
-
-{
-nombre:"Poto",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzyDIJVkTtRLA6If21-oVwgiM3crE-HRcoMqeauQRU8g&s=10",
-importancia:"Ayuda a purificar el aire en interiores.",
-riesgos:"Malos cuidados.",
-consecuencias:"Disminuye su crecimiento.",
-soluciones:"Riego moderado.",
-ayuda:"Cultivarlo en casa."
-},
-
-{
-nombre:"Lengua de Suegra",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-87UB1pKy-k4TeFGAVz6JUKIA7mK-UJBq5iBqwuKvVw&s=10",
-importancia:"Produce oxígeno y mejora la calidad del aire.",
-riesgos:"Exceso de agua.",
-consecuencias:"Daño a la planta.",
-soluciones:"Riego moderado.",
-ayuda:"Cuidar plantas de interior."
-},
-
-{
-nombre:"Cuna de Moisés",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvza2YaT6kpYkq2notCTROHe8Wg5w_83axVvknIT7YKA&s=10",
-importancia:"Es excelente para purificar el aire.",
-riesgos:"Falta de agua.",
-consecuencias:"Marchitamiento.",
-soluciones:"Riego constante.",
-ayuda:"Mantenerla en sombra."
-},
-
-{
-nombre:"Monstera",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3eSPLONyZ_waLnjjwF6pn1dzHEBwnUd5oJClja6PSYw&s=10",
-importancia:"Muy popular como planta de interior.",
-riesgos:"Temperaturas extremas.",
-consecuencias:"Daño en las hojas.",
-soluciones:"Mantenerla en interiores.",
-ayuda:"Regarla adecuadamente."
-},
-
-{
-nombre:"Geranio",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlvOspO98VaFOXmmHNwJK_SsVw3JQ-NmIti-KCcMJJtg&s=10",
-importancia:"Embellece jardines y balcones.",
-riesgos:"Sequía.",
-consecuencias:"Menor floración.",
-soluciones:"Riego adecuado.",
-ayuda:"Sembrar flores."
-},
-
-{
-nombre:"Dalia",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwYQyHTxlxbdukcOuMlY-PKfbyvyiSMAKr61UEu85vKg&s=10",
-importancia:"Es la flor nacional de México y atrae polinizadores.",
-riesgos:"Pesticidas.",
-consecuencias:"Disminución de insectos benéficos.",
-soluciones:"Reducir químicos.",
-ayuda:"Sembrar dalias."
-},
-
-{
-nombre:"Flor de Nochebuena",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3tmqkDCyNv3TZHOmb-Rcc-exhZEtPSwQEHLI85_ZdWg&s=10",
-importancia:"Planta originaria de México muy representativa de la Navidad.",
-riesgos:"Pérdida de hábitat.",
-consecuencias:"Menor conservación.",
-soluciones:"Cultivo responsable.",
-ayuda:"Comprar plantas cultivadas legalmente."
-},
-
-{
-nombre:"Malva",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM4CyMt3bJ38htsArWE_UiWmh_9QPlDzEL-b1OZE7qhA&s=10",
-importancia:"Posee propiedades medicinales y ornamentales.",
-riesgos:"Contaminación.",
-consecuencias:"Menor disponibilidad.",
-soluciones:"Cultivarla.",
-ayuda:"Cuidar áreas verdes."
-},
-
-{
-nombre:"Amapola",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEu6a1-O0KlGN_rQ1ofXLOZgv9qVgJQ10ef9Swde_GWw&s=10",
-importancia:"Flor muy importante para los polinizadores.",
-riesgos:"Uso de herbicidas.",
-consecuencias:"Pérdida de flores silvestres.",
-soluciones:"Reducir químicos.",
-ayuda:"Proteger praderas."
-},
-
-{
-nombre:"Lantana",
-imagen:"https://cloudfront-us-east-1.images.arcpublishing.com/elespectador/XVV4CGHRZBDFXFVV4CSYOQLNWQ.jpg",
-importancia:"Atrae mariposas y abejas.",
-riesgos:"Contaminación.",
-consecuencias:"Menos polinizadores.",
-soluciones:"Sembrar más flores.",
-ayuda:"Cuidar jardines."
-},
-
-{
-nombre:"Verbena",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw78fCpEA78jTxcI35GXUi4weFWQrBJIyuKRoRoEzqHA&s=10",
-importancia:"Planta ornamental que favorece la polinización.",
-riesgos:"Sequías.",
-consecuencias:"Menor floración.",
-soluciones:"Riego adecuado.",
-ayuda:"Sembrarla en jardines."
-},
-
-{
-nombre:"Lavatéra",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt8HJgFOL7gaYC0U08os54i598b5Sj6WkrJwNpmG7gHQ&s=10",
-importancia:"Produce flores grandes que atraen insectos benéficos.",
-riesgos:"Cambio climático.",
-consecuencias:"Disminución de ejemplares.",
-soluciones:"Conservar jardines.",
-ayuda:"Regarla correctamente."
-},
-
-
-{
-
-nombre:"Azucena",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1QXo6RpR3ff5tIrSrFy9TxjrzRQ-AnnzMul8pDcP6wQ&s=10",
-importancia:"Planta ornamental muy apreciada por sus flores y aroma.",
-riesgos:"Contaminación y pérdida de hábitat.",
-consecuencias:"Menor biodiversidad.",
-soluciones:"Conservar jardines y áreas verdes.",
-ayuda:"Evitar arrancar flores silvestres."
-},
-
-{
-nombre:"Begonia",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbEoFNR9uboGrxo8kd7XizRWI7qPNtWJT9lSmThl_Y4YwCmVKqKkRcCvzB&s=10 ",
-importancia:"Planta ornamental que embellece jardines y hogares.",
-riesgos:"Cambios bruscos de temperatura.",
-consecuencias:"Disminución de su cultivo.",
-soluciones:"Dar mantenimiento adecuado.",
-ayuda:"Cultivarla responsablemente."
-},
-
-{
-nombre:"Duranta",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0tQfJ24RbT_6YWLT4Za8eF1m1Kot34imZU2h9qAWgsA&s=10",
-importancia:"Arbusto ornamental que atrae mariposas.",
-riesgos:"Poda inadecuada.",
-consecuencias:"Menor floración.",
-soluciones:"Realizar podas correctas.",
-ayuda:"Cuidar jardines."
-},
-
-
-{
-nombre:"Flor de Mayo",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfYN238T3ck90DaDU6dG5vhzU0o1iGXJoG2J5fs-IroA&s=10",
-importancia:"Árbol ornamental con flores aromáticas.",
-riesgos:"Deforestación.",
-consecuencias:"Pérdida de áreas verdes.",
-soluciones:"Reforestar.",
-ayuda:"Sembrar árboles."
-},
-
-{
-nombre:"Palo Dulce",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_m7NryAAW-OYLHyu0DNIndFdn8R0-1ZHINv2jq2SsOQ&s=10",
-importancia:"Árbol medicinal muy utilizado en México.",
-riesgos:"Sobreexplotación.",
-consecuencias:"Disminución de ejemplares.",
-soluciones:"Cultivo responsable.",
-ayuda:"No talarlo."
-},
-
-{
-nombre:"Copal",
-imagen:"https://www.biodiversidad.gob.mx/media/1/usos/images/IDG1285-Bursera.jpg",
-importancia:"Árbol utilizado para producir resina aromática.",
-riesgos:"Tala excesiva.",
-consecuencias:"Pérdida de bosques.",
-soluciones:"Protección forestal.",
-ayuda:"Participar en reforestaciones."
-},
-
-{
-nombre:"Palo Fierro",
-imagen:"https://www.picturethisai.com/wiki-image/1080/153992809739714567.jpeg",
-importancia:"Árbol resistente del norte de México que protege el suelo.",
-riesgos:"Tala ilegal.",
-consecuencias:"Pérdida del ecosistema desértico.",
-soluciones:"Conservar zonas áridas.",
-ayuda:"Evitar la tala."
-},
-
-
-
-{
-nombre:"Sábila Morada",
-imagen:"https://www.miraflores.gob.pe/wp-content/uploads/2022/05/DSC7108-1024x684.jpg",
-importancia:"Planta ornamental resistente y fácil de cuidar.",
-riesgos:"Contaminación del suelo.",
-consecuencias:"Pérdida de vegetación urbana.",
-soluciones:"Mantener jardines saludables.",
-ayuda:"Cultivarla en casa."
-},
-
-
-
-{
-nombre:"Pasto Vetiver",
-imagen:"https://abanuc.com/cdn/shop/articles/Vetiver.jpg?v=1580116807",
-importancia:"Ayuda a evitar la erosión del suelo y conservar el agua.",
-riesgos:"Incendios y cambio de uso de suelo.",
-consecuencias:"Mayor erosión.",
-soluciones:"Conservar áreas verdes.",
-ayuda:"Apoyar programas de reforestación."
-}
-
-
-,
-{
-nombre:"Muérdago",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVYQ3a0CKk39f-bYKa61JEbkvnFNZMkflg-8c5fbSKPA&s=10",
-importancia:"Es una planta que sirve de alimento y refugio para diversas aves y contribuye a la biodiversidad.",
-riesgos:"La tala de árboles donde crece.",
-consecuencias:"Disminuye el alimento disponible para algunas especies.",
-soluciones:"Proteger los bosques y árboles maduros.",
-ayuda:"Evitar la tala innecesaria."
-},
-
-{
-nombre:"Madroño",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS37RLt87MoD_KqKmNm7nEA_g6IW9dJyoeWO4s1yiP8Lw&s=10",
-importancia:"Árbol nativo de México que produce frutos para la fauna silvestre y ayuda a conservar los bosques.",
-riesgos:"Incendios forestales y deforestación.",
-consecuencias:"Pérdida de hábitat para muchas especies.",
-soluciones:"Promover la reforestación.",
-ayuda:"Participar en campañas de conservación."
-},
-
-{
-nombre:"Palo Mulato",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsO97Q-HkK6XlCqded1SD6smuA0iiIUTTmw-dKLk72-A&s=10",
-importancia:"Árbol tropical que ayuda a conservar el suelo y proporciona refugio a la fauna.",
-riesgos:"La tala y el cambio de uso de suelo.",
-consecuencias:"Reducción de los ecosistemas tropicales.",
-soluciones:"Proteger las selvas y promover la reforestación.",
-ayuda:"Evitar la destrucción de áreas naturales."
-},
-
-,
-{
-nombre:"Árbol del Amor",
-imagen:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQib0F2rxTeh71rhALKVb_J6ez9eXMYYVSTdcm3SrWBew&s=10",
-importancia:"El árbol del amor es una especie ornamental muy apreciada por sus flores rosadas. Ayuda a embellecer parques y jardines, además de atraer abejas y otros insectos polinizadores.",
-riesgos:"La contaminación, las sequías prolongadas y la tala reducen su presencia.",
-consecuencias:"Disminuyen las áreas verdes y los recursos para los polinizadores.",
-soluciones:"Promover su plantación en parques, jardines y zonas urbanas.",
-ayuda:"Cuidar los árboles existentes, participar en campañas de reforestación y evitar dañar las áreas verdes."
-}
-
-];
-
-const contenedor = document.getElementById("contenedor");
-
-plantas.forEach(planta=>{
-
-contenedor.innerHTML += `
-
-<div class="card" onclick='abrirModal(${JSON.stringify(planta)})'>
-
-<img src="${planta.imagen}">
-
-<h2>${planta.nombre}</h2>
-
-<p>Haz clic para conocer más información</p>
-
-</div>
-
-`;
-
-});
-
-function abrirModal(planta){
-
-document.getElementById("modal").style.display="flex";
-
-document.getElementById("imagen").src = planta.imagen;
-document.getElementById("nombre").innerText = planta.nombre;
-document.getElementById("importancia").innerText = planta.importancia;
-document.getElementById("riesgos").innerText = planta.riesgos;
-document.getElementById("consecuencias").innerText = planta.consecuencias;
-document.getElementById("soluciones").innerText = planta.soluciones;
-document.getElementById("ayuda").innerText = planta.ayuda;
-
-}
-
-function cerrarModal(){
-
-document.getElementById("modal").style.display="none";
-
-}
-
-</script>
+  <header>
+    <div class="contenido">
+      <h1>🌿Plantamos</h1>
+      <p>
+        Promover el cuidado de las plantas y crear conciencia
+        sobre la importancia de proteger los ecosistemas terrestres,
+        la biodiversidad y el medio ambiente.
+      </p>
+    </div>
+  </header>
+
+  <section class="intro">
+    <h2>🌎 ¿Por qué realizamos esta página?</h2>
+    <p>
+      Creamos esta página para informar y concientizar sobre la importancia
+      de las plantas y el impacto ambiental que enfrentan debido
+      a la contaminación, incendios forestales, deforestación y cambio climático.
+      Las plantas son fundamentales para la vida porque producen oxígeno,
+      ayudan a regular el clima, mantienen el equilibrio ecológico y muchas
+      poseen propiedades medicinales utilizadas desde hace cientos de años.
+      Nuestro objetivo es motivar a las personas a cuidar el planeta y valorar
+      la importancia de proteger la naturaleza.
+    </p>
+  </section>
+
+  <!-- BUSCADOR -->
+  <div class="buscador-container">
+    <input 
+      type="text" 
+      id="buscador" 
+      placeholder="🔍 Buscar planta, flor o árbol..." 
+      onkeyup="filtrarPlantas()"
+    >
+  </div>
+
+  <h1 class="titulo">🌱 Flores, Plantas y Árboles</h1>
+
+  <div class="contenedor" id="contenedor"></div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-contenido">
+      <img id="imagen" alt="Imagen de planta">
+      <div class="info">
+        <h2 id="nombre"></h2>
+
+        <h3>🌿 Importancia</h3>
+        <p id="importancia"></p>
+
+        <h3>⚠ Riesgos</h3>
+        <p id="riesgos"></p>
+
+        <h3>💀 Consecuencias</h3>
+        <p id="consecuencias"></p>
+
+        <h3>💡 Soluciones</h3>
+        <p id="soluciones"></p>
+
+        <h3>🤝 ¿Cómo ayudar?</h3>
+        <p id="ayuda"></p>
+
+        <button onclick="cerrarModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <h2>🌍 “Proteger las plantas es proteger el futuro de la humanidad.”</h2>
+    <p> Equipo: Ricardo Baez Garibaldi, Jonathan Eliuth Franco Sanchez, Andrea Isabel Perez Cruz, Benjamin Humberto Escobedo Torres, Ximena Sarahi Quiñones Castillo, Dayra Valeria Antonio Hernandez </p>
+  </footer>
+
+  <script>
+    const plantas = [
+      // --- ESPECIES INICIALES (1 - 72) ---
+      {
+        nombre: "Aloe Vera",
+        imagen: "https://s10.s3c.es/imag/_v0/2121x1157/1/e/8/Por-que-tener-una-planta-aloe-vera-en-casa.jpg",
+        importancia: "El Aloe Vera es una de las plantas medicinales más utilizadas en el mundo debido a sus propiedades curativas y regenerativas. Desde hace muchos años ha sido utilizada para tratar quemaduras, heridas, irritaciones en la piel y problemas digestivos.",
+        riesgos: "El Aloe Vera se ve afectado por la contaminación, el cambio climático y la destrucción de áreas verdes. También muchas personas extraen esta planta sin volver a sembrarla.",
+        consecuencias: "La pérdida de esta planta afectaría la medicina natural y disminuiría recursos utilizados para productos medicinales y cosméticos.",
+        soluciones: "Promover el cultivo responsable, proteger áreas verdes y reducir la contaminación ambiental.",
+        ayuda: "Podemos ayudar sembrando Aloe Vera en casa, reutilizando agua y cuidando la naturaleza."
+      },
+      {
+        nombre: "Manzanilla",
+        imagen: "https://cloudfront-us-east-1.images.arcpublishing.com/infobae/TTXFSRCO6FBE5NUD6FSEAIAZ2I.png",
+        importancia: "La manzanilla es una planta conocida por sus propiedades relajantes y digestivas. Muchas personas la utilizan para aliviar dolores estomacales, ansiedad y estrés. Además, ayuda a atraer insectos polinizadores importantes para el ecosistema.",
+        riesgos: "Los pesticidas, la contaminación del suelo y el cambio climático afectan el crecimiento de esta planta.",
+        consecuencias: "La desaparición de la manzanilla afectaría tanto a la medicina natural como a los insectos que dependen de ella.",
+        soluciones: "Reducir químicos dañinos y promover cultivos ecológicos.",
+        ayuda: "Sembrar flores y cuidar jardines ayuda a proteger esta especie."
+      },
+      {
+        nombre: "Romero",
+        imagen: "https://cdn.pixabay.com/photo/2015/12/13/00/11/rosemary-1090419_640.jpg",
+        importancia: "El romero es una planta aromática utilizada para mejorar la memoria, aliviar dolores musculares y fortalecer la circulación sanguínea. También es muy utilizada en la cocina y ayuda a atraer insectos beneficiosos.",
+        riesgos: "La contaminación y el uso excesivo de químicos afectan su crecimiento.",
+        consecuencias: "La pérdida del romero disminuiría la biodiversidad y afectaría ecosistemas.",
+        soluciones: "Promover cultivos ecológicos y reducir contaminación.",
+        ayuda: "Sembrar plantas aromáticas y cuidar áreas verdes."
+      },
+      {
+        nombre: "Menta",
+        imagen: "https://media.admagazine.com/photos/618a61cc51ab72df0a764124/3:2/w_3024,h_2016,c_limit/83664.jpg",
+        importancia: "La menta es utilizada para aliviar problemas digestivos y respiratorios. También ayuda a reducir el estrés gracias a su aroma refrescante.",
+        riesgos: "La contaminación del suelo afecta la calidad de esta planta medicinal.",
+        consecuencias: "La pérdida de plantas medicinales afecta alternativas naturales para la salud.",
+        soluciones: "Usar agricultura sostenible y evitar químicos dañinos.",
+        ayuda: "Cultivar plantas medicinales y cuidar el agua."
+      },
+      {
+        nombre: "Eucalipto",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTq1QBVEkllucpuEIj8ux6vjWnFddGBAHujpQ&s",
+        importancia: "El eucalipto es conocido por ayudar a aliviar problemas respiratorios y producir grandes cantidades de oxígeno.",
+        riesgos: "Los incendios forestales y la tala excesiva afectan los bosques de eucalipto.",
+        consecuencias: "La pérdida de árboles aumenta la contaminación y afecta hábitats naturales.",
+        soluciones: "Reforestar áreas dañadas y proteger bosques.",
+        ayuda: "Evitar incendios forestales y plantar árboles."
+      },
+      {
+        nombre: "Gerbera",
+        imagen: "https://cdn0.ecologiaverde.com/es/posts/4/9/0/caracteristicas_de_la_planta_gerbera_2094_0_600.jpg",
+        importancia: "La gerbera es una flor muy importante porque ayuda a purificar el aire y aporta belleza natural al ecosistema.",
+        riesgos: "La contaminación y pesticidas dañan esta flor.",
+        consecuencias: "La pérdida de flores afecta insectos polinizadores y biodiversidad.",
+        soluciones: "Reducir contaminación y proteger jardines.",
+        ayuda: "Sembrar flores y cuidar polinizadores."
+      },
+      {
+        nombre: "Árnica",
+        imagen: "https://www.lasaponaria.es/img/cms/arnica-3.jpg",
+        importancia: "La árnica es utilizada para aliviar golpes, inflamaciones y dolores musculares gracias a sus propiedades medicinales.",
+        riesgos: "La explotación excesiva y destrucción de ecosistemas afectan esta planta.",
+        consecuencias: "La pérdida de árnica disminuiría recursos medicinales naturales.",
+        soluciones: "Proteger áreas naturales y evitar sobreexplotación.",
+        ayuda: "Cuidar ecosistemas y sembrar plantas medicinales."
+      },
+      {
+        nombre: "Girasol",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBCPpKf92u-FP6_iniNI3mwGQ7N8u8itq2Hg&s",
+        importancia: "El girasol es importante porque sirve de alimento para aves e insectos polinizadores. Además, ayuda a mejorar el suelo y aporta belleza natural.",
+        riesgos: "La sequía y contaminación afectan su crecimiento.",
+        consecuencias: "La pérdida de girasoles afecta polinizadores importantes para el ecosistema.",
+        soluciones: "Cuidar cultivos y ahorrar agua.",
+        ayuda: "Sembrar flores y proteger insectos."
+      },
+      {
+        nombre: "Palmera",
+        imagen: "https://cdn.homedepot.com.mx/productos/817277/817277-d.jpg",
+        importancia: "Las palmeras son fundamentales en ecosistemas tropicales porque proporcionan alimento y refugio para muchos animales.",
+        riesgos: "La tala excesiva y urbanización afectan estas plantas.",
+        consecuencias: "La pérdida de palmeras disminuye biodiversidad y afecta ecosistemas tropicales.",
+        soluciones: "Conservar áreas naturales y reducir tala.",
+        ayuda: "Respetar ecosistemas tropicales."
+      },
+      {
+        nombre: "Lavanda",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/7/7e/Single_lavender_flower02.jpg",
+        importancia: "La lavanda ayuda a reducir estrés y ansiedad gracias a su aroma relajante. También atrae abejas y otros polinizadores importantes.",
+        riesgos: "Los pesticidas afectan a los insectos polinizadores.",
+        consecuencias: "La disminución de abejas afecta la producción de plantas y alimentos.",
+        soluciones: "Reducir químicos dañinos y proteger polinizadores.",
+        ayuda: "Sembrar flores y cuidar la biodiversidad."
+      },
+      {
+        nombre: "Bugambilia",
+        imagen: "https://www.cocinadelirante.com/800x600/filters:format(webp):quality(75)/sites/default/files/images/2019/05/como-cuidar-bugambilias-en-maceta.jpg",
+        importancia: "La bugambilia es una planta ornamental muy apreciada por sus coloridas flores. Ayuda a embellecer jardines, atraer abejas y mariposas, además de proporcionar sombra.",
+        riesgos: "La urbanización, la contaminación y la falta de cuidados disminuyen su presencia.",
+        consecuencias: "Se reduce la diversidad de flores que alimentan a los polinizadores.",
+        soluciones: "Sembrar bugambilias en jardines y evitar el uso excesivo de pesticidas.",
+        ayuda: "Regarla adecuadamente y proteger las áreas verdes."
+      },
+      {
+        nombre: "Albahaca",
+        imagen: "https://lyncott.mx/wp-content/uploads/2016/08/albahacabelleza-20.jpg",
+        importancia: "La albahaca es utilizada en la cocina y la medicina natural. Posee propiedades antibacterianas y ayuda a atraer polinizadores importantes.",
+        riesgos: "La contaminación del suelo y el uso de pesticidas afectan su desarrollo.",
+        consecuencias: "Disminuye la disponibilidad de plantas aromáticas y medicinales.",
+        soluciones: "Promover huertos urbanos y agricultura ecológica.",
+        ayuda: "Cultivarla en casa y evitar químicos."
+      },
+      {
+        nombre: "Tomillo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw51NdsrXKhut54s_9rSjOM8UfczYymwZx4Lh56bJISvA7hp8-VNXa0UiK&s=10",
+        importancia: "El tomillo es una planta medicinal utilizada para aliviar enfermedades respiratorias y fortalecer el sistema inmunológico.",
+        riesgos: "La sobreexplotación y el cambio climático afectan sus poblaciones.",
+        consecuencias: "Se pierde una importante planta medicinal.",
+        soluciones: "Cultivarlo de manera sostenible.",
+        ayuda: "Consumir productos provenientes de cultivos responsables."
+      },
+      {
+        nombre: "Orégano",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYcFvJKfacQ8wjOAl6XaARWGWdov4AW5heXjvqCEn67n4PzcYjDOmAiYLtfx7-k-NYWA7mjaQdxmV6WlV-dln-OwAtEDK-eO5d552s4Q&s=10",
+        importancia: "El orégano es una planta aromática muy utilizada en la cocina y con propiedades antioxidantes.",
+        riesgos: "La contaminación y el uso excesivo de fertilizantes.",
+        consecuencias: "Disminuye su producción y calidad.",
+        soluciones: "Promover cultivos orgánicos.",
+        ayuda: "Cultivar orégano en casa."
+      },
+      {
+        nombre: "Salvia",
+        imagen: "https://i0.wp.com/www.florestore.com/flores-a-domicilio/wp-content/uploads/2018/09/cuidados-de-la-salvia-florestore-portada.jpg?fit=1502%2C1002&ssl=1",
+        importancia: "La salvia ayuda en tratamientos naturales para problemas digestivos e inflamaciones.",
+        riesgos: "La destrucción de hábitats naturales.",
+        consecuencias: "Pérdida de biodiversidad.",
+        soluciones: "Conservar ecosistemas.",
+        ayuda: "Proteger áreas naturales."
+      },
+      {
+        nombre: "Ruda",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkmWwfe61h2_80mj2BYQkXvBuMLe_xb3O2rlpgf2HM0p1DUPiiNm9ww_rQrq55NbIKxZcxVmmDFSybnEG0vj_HufSRwURd43f8rwY6gg&s=10",
+        importancia: "La ruda ha sido utilizada tradicionalmente como planta medicinal y repelente natural de insectos.",
+        riesgos: "La extracción excesiva.",
+        consecuencias: "Reducción de poblaciones silvestres.",
+        soluciones: "Cultivarla responsablemente.",
+        ayuda: "Evitar arrancarla del campo."
+      },
+      {
+        nombre: "Diente de León",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Schulterbachtal_L%C3%B6wenzahn_Samenstand-20200517-RM-111527.jpg/250px-Schulterbachtal_L%C3%B6wenzahn_Samenstand-20200517-RM-111527.jpg",
+        importancia: "Es una planta medicinal que mejora la digestión y alimenta a numerosos polinizadores.",
+        riesgos: "El uso de herbicidas.",
+        consecuencias: "Disminuyen las fuentes de alimento para las abejas.",
+        soluciones: "Reducir herbicidas.",
+        ayuda: "Permitir que crezca en jardines."
+      },
+      {
+        nombre: "Caléndula",
+        imagen: "https://www.florescastillon.com/wp-content/uploads/2024/08/calendula.jpg",
+        importancia: "La caléndula posee propiedades antiinflamatorias y cicatrizantes.",
+        riesgos: "Contaminación y pérdida de suelos fértiles.",
+        consecuencias: "Menor disponibilidad para la medicina natural.",
+        soluciones: "Promover su cultivo.",
+        ayuda: "Sembrarla en casa."
+      },
+      {
+        nombre: "Hierbabuena",
+        imagen: "https://media.admagazine.com/photos/68bf8e2f68f3b79e26ea3729/master/w_1600%2Cc_limit/hierbabuena-caracter%25C3%25ADsticas.jpg",
+        importancia: "Muy utilizada para aliviar problemas digestivos y respiratorios.",
+        riesgos: "La contaminación del agua y del suelo.",
+        consecuencias: "Pérdida de plantas medicinales.",
+        soluciones: "Cuidar los recursos naturales.",
+        ayuda: "Cultivarla en macetas."
+      },
+      {
+        nombre: "Jengibre",
+        imagen: "https://actualfruveg.com/wp-content/uploads/2020/11/ginger-plant-500x500-1-400x400.jpg",
+        importancia: "El jengibre fortalece el sistema inmunológico y ayuda a aliviar enfermedades respiratorias.",
+        riesgos: "Cambio climático y agricultura intensiva.",
+        consecuencias: "Disminuye su producción.",
+        soluciones: "Agricultura sostenible.",
+        ayuda: "Consumir productos responsables."
+      },
+      {
+        nombre: "Cúrcuma",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpMFcby5ApqfNJGAfOvSyPo-2KdPni-M1abYhT693N5IRO2KzCUjRy10HmwKN6fkonu7jTT34G04fH_hsQ8FBpdH3JKiJ4Z2it9PaYd8bv3g&s=10",
+        importancia: "La cúrcuma tiene propiedades antioxidantes y antiinflamatorias.",
+        riesgos: "Sobreexplotación agrícola.",
+        consecuencias: "Reducción de su producción.",
+        soluciones: "Cultivos responsables.",
+        ayuda: "Apoyar la agricultura ecológica."
+      },
+      {
+        nombre: "Neem",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/2/20/Neem_%28Azadirachta_indica%29_in_Hyderabad_W_IMG_6976.jpg",
+        importancia: "El neem se utiliza como insecticida natural y posee propiedades medicinales.",
+        riesgos: "Deforestación.",
+        consecuencias: "Pérdida de biodiversidad.",
+        soluciones: "Reforestar.",
+        ayuda: "Plantar árboles."
+      },
+      {
+        nombre: "Cedro",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyTuRcWBaoGfsHCehuF7ZRq6I0Pma9JaK03cJIJbNRDg&s=10",
+        importancia: "Árbol que ayuda a producir oxígeno y conservar los suelos.",
+        riesgos: "Tala ilegal.",
+        consecuencias: "Pérdida de bosques.",
+        soluciones: "Proteger áreas forestales.",
+        ayuda: "Evitar comprar madera ilegal."
+      },
+      {
+        nombre: "Pino",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ3F8Kk6OuzC-bK_8vj5Saa2NaqYvHayTWr9pkatdk1cRdgGHuhJwqWZI&s=10",
+        importancia: "Produce oxígeno y sirve de hogar para muchas especies.",
+        riesgos: "Incendios forestales.",
+        consecuencias: "Destrucción de ecosistemas.",
+        soluciones: "Prevención de incendios.",
+        ayuda: "No tirar colillas ni hacer fogatas."
+      },
+      {
+        nombre: "Encino",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGbkf97jVuXWHtiGxMojKWqyrfxImfBwgMJLpNjrjbEQ&s=10",
+        importancia: "Árbol de gran importancia para la fauna y el equilibrio ecológico.",
+        riesgos: "Deforestación.",
+        consecuencias: "Pérdida de hábitats.",
+        soluciones: "Reforestación.",
+        ayuda: "Participar en campañas ambientales."
+      },
+      {
+        nombre: "Jacaranda",
+        imagen: "https://jardinjaponespunta.com/wp-content/uploads/2024/11/OIP-1.jpeg",
+        importancia: "Embellece ciudades y atrae polinizadores.",
+        riesgos: "Contaminación urbana.",
+        consecuencias: "Menos áreas verdes.",
+        soluciones: "Plantar más árboles.",
+        ayuda: "Cuidar parques."
+      },
+      {
+        nombre: "Nopal",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYYZXNfEQSds0XpYZZYo-YEYNEBvWTCQMCUVko2VvuMve06hQrIGJPAqZi&s=10g",
+        importancia: "Es alimento, medicina natural y ayuda a conservar suelos áridos.",
+        riesgos: "Cambio climático.",
+        consecuencias: "Afectación de ecosistemas desérticos.",
+        soluciones: "Conservar zonas naturales.",
+        ayuda: "Evitar destruir la vegetación."
+      },
+      {
+        nombre: "Agave",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_n4xOE5lhSo_g-zeaxQ-XNTUcZAPVrzL_OTgl2pacw&s=10",
+        importancia: "Es importante para la producción de alimentos y bebidas, además de alimentar murciélagos polinizadores.",
+        riesgos: "Sobreexplotación.",
+        consecuencias: "Disminución de la biodiversidad.",
+        soluciones: "Cultivo responsable.",
+        ayuda: "Apoyar productores sostenibles."
+      },
+      {
+        nombre: "Bambú",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbcrXsJ1cGrsR5VJ-acGDBYzwOFoMmfsBgQnhoDbmAZA&s=10",
+        importancia: "Crece rápidamente, captura dióxido de carbono y ayuda a evitar la erosión.",
+        riesgos: "Deforestación.",
+        consecuencias: "Pérdida de hábitats.",
+        soluciones: "Reforestación.",
+        ayuda: "Plantar bambú."
+      },
+      {
+        nombre: "Moringa",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlGLR9BfyQFAnBwODdKBvjVuhe67DVEU4Hplh41RNLZ2buRVR_whEL9T8&s=10",
+        importancia: "Posee un alto valor nutricional y medicinal.",
+        riesgos: "Cambio climático.",
+        consecuencias: "Disminuye su producción.",
+        soluciones: "Cultivos sostenibles.",
+        ayuda: "Promover su conservación."
+      },
+      {
+        nombre: "Valeriana",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTyELATNtGHQF2KBqX1fdGwldfbERfikAiAyjZq7fuxA&s=10",
+        importancia: "Ayuda a combatir el insomnio y la ansiedad.",
+        riesgos: "Sobreexplotación.",
+        consecuencias: "Escasez de la planta.",
+        soluciones: "Cultivo controlado.",
+        ayuda: "Consumir productos certificados."
+      },
+      {
+        nombre: "Jazmín",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_CNhwPvf9jr2Q9ndDOlYwKzn_AUphCvXf84oaaNMwGk_ezSED4aVUI7k&s=10",
+        importancia: "Aporta belleza y atrae polinizadores.",
+        riesgos: "Contaminación.",
+        consecuencias: "Menos flores para insectos.",
+        soluciones: "Reducir pesticidas.",
+        ayuda: "Sembrar flores."
+      },
+      {
+        nombre: "Magnolia",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-6iToJNX5ikR-yqkvxOOyyLpssfAhu5tcnHZwAGh1uA&s=10",
+        importancia: "Árbol ornamental que ayuda a mantener la biodiversidad.",
+        riesgos: "Deforestación.",
+        consecuencias: "Pérdida de árboles nativos.",
+        soluciones: "Conservar bosques.",
+        ayuda: "Participar en reforestaciones."
+      },
+      {
+        nombre: "Orquídea",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUqw3Lb1yMdrucWKHqoAO9R96pLNfFUuJfZZw_v-W_SQ&s=10",
+        importancia: "Las orquídeas son fundamentales para la biodiversidad y poseen gran valor ecológico.",
+        riesgos: "Comercio ilegal y destrucción de hábitats.",
+        consecuencias: "Muchas especies están en peligro de extinción.",
+        soluciones: "Proteger bosques y evitar el comercio ilegal.",
+        ayuda: "Comprar únicamente plantas cultivadas legalmente."
+      },
+      {
+        nombre: "Sauce",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsn0SCgzrFZpk5k9Je8cZ_9syKzRZIiJtXxfxgzRID-A&s=10",
+        importancia: "El sauce ayuda a proteger ríos y su corteza contiene compuestos medicinales.",
+        riesgos: "Contaminación de ríos y tala.",
+        consecuencias: "Erosión de las riberas.",
+        soluciones: "Conservar cuerpos de agua.",
+        ayuda: "No contaminar ríos."
+      },
+      {
+        nombre: "Rosal",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6YLxBGhHMHhGn-ZGUb7ENxuO-bxPsfw2AluSrvwX8-vsXJM6X4FMTR3U&s=10",
+        importancia: "El rosal produce flores muy apreciadas por su belleza y aroma. Además, alimenta a abejas y mariposas.",
+        riesgos: "Uso excesivo de pesticidas y enfermedades.",
+        consecuencias: "Disminuyen los polinizadores.",
+        soluciones: "Usar fertilizantes orgánicos.",
+        ayuda: "Sembrar rosales y cuidar las flores."
+      },
+      {
+        nombre: "Margarita",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKnGjhUdTbmXtAi2LfUqxPP4Xu9pn0SbKTkjgSc9VKXA&s=10",
+        importancia: "Ayuda a los insectos polinizadores y embellece jardines.",
+        riesgos: "Contaminación y herbicidas.",
+        consecuencias: "Pérdida de biodiversidad.",
+        soluciones: "Reducir químicos.",
+        ayuda: "Cultivar flores."
+      },
+      {
+        nombre: "Clavel",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbedEItU551iHUWp2WtWYEx4pAuV4LplEYzfh40mZZdzKJLh6IAEvqhPY&s=10",
+        importancia: "Flor ornamental de gran importancia económica.",
+        riesgos: "Plagas.",
+        consecuencias: "Menor producción floral.",
+        soluciones: "Control biológico.",
+        ayuda: "Cuidar jardines."
+      },
+      {
+        nombre: "Tulipán",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE78P8tLndagvfGvu75wVb8tfc6h54PRnt6KoxcJbru_LWwIRF-4oUDBw&s=10",
+        importancia: "Flor muy apreciada que atrae insectos benéficos.",
+        riesgos: "Cambio climático.",
+        consecuencias: "Menor floración.",
+        soluciones: "Proteger jardines.",
+        ayuda: "No cortar flores silvestres."
+      },
+      {
+        nombre: "Lavandín",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzgpUo_-zhwI7m-ain3jflVTJZRhyUkgey4c4_Fq3xof4SGEgGf37nJWh7&s=10",
+        importancia: "Produce aceites esenciales y atrae abejas.",
+        riesgos: "Sequías.",
+        consecuencias: "Menos producción de flores.",
+        soluciones: "Uso responsable del agua.",
+        ayuda: "Cultivar plantas aromáticas."
+      },
+      {
+        nombre: "Hierba Limón",
+        imagen: "https://static.bainet.es/clip/1630b54f-3a0d-4aa5-9cef-986096acf5b5_source-aspect-ratio_1600w_0.jpg",
+        importancia: "Muy utilizada para infusiones y medicina natural.",
+        riesgos: "Contaminación del suelo.",
+        consecuencias: "Disminuye su calidad.",
+        soluciones: "Agricultura ecológica.",
+        ayuda: "Cultivarla en casa."
+      },
+      {
+        nombre: "Anís",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTImtICSeSCvGzCO7IVacAlTozY6GoBCg-bWVzWEqsDAWC7SmYFX-ioqcor&s=10g",
+        importancia: "Favorece la digestión y tiene usos medicinales.",
+        riesgos: "Sobreexplotación.",
+        consecuencias: "Escasez.",
+        soluciones: "Cultivo responsable.",
+        ayuda: "Consumir productos certificados."
+      },
+      {
+        nombre: "Ceiba",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyphX-HPSoeUl5Hw6chxGKn1KaCPRlDDdFiQ6_Zbm00g&s=10",
+        importancia: "La ceiba es un árbol enorme que almacena carbono y sirve de refugio para aves, insectos y mamíferos.",
+        riesgos: "La tala y la expansión urbana.",
+        consecuencias: "Pérdida de biodiversidad.",
+        soluciones: "Proteger bosques tropicales.",
+        ayuda: "Participar en campañas de reforestación."
+      },
+      {
+        nombre: "Ahuehuete",
+        imagen: "https://cdn.milenio.com/uploads/media/2022/05/10/ahuehuete-especial_0_22_500_311.jpg",
+        importancia: "Es el árbol nacional de México y ayuda a conservar los ecosistemas ribereños.",
+        riesgos: "Contaminación de ríos.",
+        consecuencias: "Disminución de ejemplares históricos.",
+        soluciones: "Cuidar las fuentes de agua.",
+        ayuda: "No contaminar ríos."
+      },
+      {
+        nombre: "Ficus",
+        imagen: "https://illiciplants.com/wp-content/uploads/2022/12/ficus-nitida-ejemplar-1.jpg",
+        importancia: "Purifica el aire y proporciona sombra.",
+        riesgos: "Poda excesiva.",
+        consecuencias: "Menos áreas verdes.",
+        soluciones: "Dar mantenimiento adecuado.",
+        ayuda: "Plantar árboles urbanos."
+      },
+      {
+        nombre: "Olivo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkvesUfG6aSZPa5Xa3ddPc_jlpiON9BmrBfs6ngfHJqHx9Unzsitd96d0&s=10",
+        importancia: "Produce aceitunas y ayuda a conservar el suelo.",
+        riesgos: "Sequías.",
+        consecuencias: "Disminución de cosechas.",
+        soluciones: "Uso eficiente del agua.",
+        ayuda: "Apoyar agricultura sostenible."
+      },
+      {
+        nombre: "Ciprés",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQdBjWrFLUsqch6zOMkjDHnuLtbON79awr1bcHKxXRpw&s=10g",
+        importancia: "Protege el suelo y mejora la calidad del aire.",
+        riesgos: "Incendios forestales.",
+        consecuencias: "Pérdida de bosques.",
+        soluciones: "Prevención de incendios.",
+        ayuda: "No hacer fogatas."
+      },
+      {
+        nombre: "Roble",
+        imagen: "https://mejorconsalud.as.com/wp-content/uploads/2022/03/arbol-roble.jpg",
+        importancia: "Alberga cientos de especies de animales.",
+        riesgos: "Deforestación.",
+        consecuencias: "Pérdida de hábitats.",
+        soluciones: "Conservar bosques.",
+        ayuda: "Participar en reforestaciones."
+      },
+      {
+        nombre: "Álamo",
+        imagen: "https://www.uanl.mx/wp-content/uploads/2023/12/Alamo-Planta.jpg",
+        importancia: "Ayuda a evitar la erosión de los suelos.",
+        riesgos: "Contaminación de ríos.",
+        consecuencias: "Desgaste del suelo.",
+        soluciones: "Cuidar zonas ribereñas.",
+        ayuda: "No tirar basura."
+      },
+      {
+        nombre: "Nogal",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1iZ8SO1xM95ADnm512uZkxNgzveojZ7UojVoGmoXr60501eY4T-KdTZj&s=10",
+        importancia: "Produce nueces y proporciona alimento a diversas especies.",
+        riesgos: "Cambio climático.",
+        consecuencias: "Reducción de producción.",
+        soluciones: "Agricultura responsable.",
+        ayuda: "Consumir productos locales."
+      },
+      {
+        nombre: "Limonero",
+        imagen: "https://www.infobae.com/new-resizer/JEx63Jd4oTBuYFVge4JZ1NZrG7k=/arc-anglerfish-arc2-prod-infobae/public/MY75DGYALRGNLFGK3JAL4ILWOA.jpg",
+        importancia: "Produce frutos ricos en vitamina C.",
+        riesgos: "Plagas.",
+        consecuencias: "Pérdida de cultivos.",
+        soluciones: "Control biológico.",
+        ayuda: "Cuidar árboles frutales."
+      },
+      {
+        nombre: "Naranjo",
+        imagen: "https://www.frutamare.com/wp-content/uploads/2019/02/naranjo1.jpg",
+        importancia: "Produce frutos y favorece la biodiversidad.",
+        riesgos: "Enfermedades.",
+        consecuencias: "Menor producción.",
+        soluciones: "Buenas prácticas agrícolas.",
+        ayuda: "Evitar pesticidas excesivos."
+      },
+      {
+        nombre: "Mandarino",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBecaNHB-NHASmk9I2PYpWM6Q8gKApcqnQREWbhSReDA&s=10",
+        importancia: "Produce frutos nutritivos.",
+        riesgos: "Sequías.",
+        consecuencias: "Disminuye la cosecha.",
+        soluciones: "Riego responsable.",
+        ayuda: "Ahorrar agua."
+      },
+      {
+        nombre: "Granado",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpKIYO9oMtnwTK-H21vAOakgCAs4kY0WnakU0Aovlk5PSNTueMqn7eac6H&s=10",
+        importancia: "Produce granadas con propiedades antioxidantes.",
+        riesgos: "Cambio climático.",
+        consecuencias: "Menos frutos.",
+        soluciones: "Proteger cultivos.",
+        ayuda: "Consumir productos locales."
+      },
+      {
+        nombre: "Cerezo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPHPtLJq5iKL8EylOyZItUab_Ho45AEfKBNaDNnJsRcw&s=10",
+        importancia: "Aporta belleza y alimento para polinizadores.",
+        riesgos: "Heladas extremas.",
+        consecuencias: "Pérdida de flores.",
+        soluciones: "Cuidar áreas verdes.",
+        ayuda: "Sembrar árboles."
+      },
+      {
+        nombre: "Camelia",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXyT4jrgI7FMHC8s7VxL5Gwtvx3WUddLnrjlDdIz4vOA&s=10",
+        importancia: "Flor ornamental que favorece la biodiversidad.",
+        riesgos: "Contaminación.",
+        consecuencias: "Disminuyen los polinizadores.",
+        soluciones: "Reducir pesticidas.",
+        ayuda: "Sembrar flores."
+      },
+      {
+        nombre: "Hibisco",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyI5A8Fd1R-WIcBa1xKo9mNHf3fktJB4bYlPzEql4UCA&s=10",
+        importancia: "Atrae colibríes y mariposas.",
+        riesgos: "Uso de químicos.",
+        consecuencias: "Menos flores.",
+        soluciones: "Cultivo ecológico.",
+        ayuda: "Cuidar jardines."
+      },
+      {
+        nombre: "Cactus",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDMY3POlmtddmrdlIWRpr4pVD1Lv0T3hccWFjbkVd5VA&s=10",
+        importancia: "Conserva agua y da refugio a animales del desierto.",
+        riesgos: "Extracción ilegal.",
+        consecuencias: "Pérdida de especies.",
+        soluciones: "Proteger desiertos.",
+        ayuda: "No comprar especies extraídas."
+      },
+      {
+        nombre: "Biznaga",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-52cSObVq7Mz_WGG9c1oS_nwXtW5g3o7KkYCQ-C4yUQ&s=10",
+        importancia: "Es una planta emblemática de México.",
+        riesgos: "Comercio ilegal.",
+        consecuencias: "Peligro de extinción.",
+        soluciones: "Proteger especies.",
+        ayuda: "No comprar plantas silvestres."
+      },
+      {
+        nombre: "Palo Verde",
+        imagen: "https://static.wixstatic.com/media/20068f_61521e2459c14d8fa64506711b8c24a1~mv2.jpeg/v1/fill/w_480,h_426,al_c,lg_1,q_80,enc_avif,quality_auto/20068f_61521e2459c14d8fa64506711b8c24a1~mv2.jpeg",
+        importancia: "Resiste la sequía y protege el suelo.",
+        riesgos: "Cambio climático.",
+        consecuencias: "Pérdida de vegetación.",
+        soluciones: "Conservar ecosistemas.",
+        ayuda: "Reforestar."
+      },
+      {
+        nombre: "Sauco",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJEHAsylRzg9MSRwOnVEfUquG6t3s_uNVPVrHNUcR_Vg&s=10",
+        importancia: "Sus flores y frutos son utilizados en medicina tradicional.",
+        riesgos: "Contaminación.",
+        consecuencias: "Disminución de ejemplares.",
+        soluciones: "Conservar hábitats.",
+        ayuda: "Sembrar árboles."
+      },
+      {
+        nombre: "Guayabo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2veJrnkfsXScX8BszGGkW1G5hAsKGlwXITyloEtIyDMa3296r91jCWrE&s=10",
+        importancia: "Produce frutos ricos en vitamina C.",
+        riesgos: "Plagas.",
+        consecuencias: "Menor producción.",
+        soluciones: "Control biológico.",
+        ayuda: "Cuidar árboles frutales."
+      },
+      {
+        nombre: "Papayo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrnJkX-9ySFGG8djSikr5Nohylb5IVE-sOnEUHf2Dofg&s=10",
+        importancia: "Produce frutos nutritivos y medicinales.",
+        riesgos: "Enfermedades.",
+        consecuencias: "Pérdida de cultivos.",
+        soluciones: "Agricultura responsable.",
+        ayuda: "Consumir productos locales."
+      },
+      {
+        nombre: "Árbol de Mango",
+        imagen: "https://e01-elmundo.uecdn.es/assets/multimedia/imagenes/2025/06/19/17503508330846.jpg",
+        importancia: "Produce frutos y da sombra a muchas especies.",
+        riesgos: "Deforestación.",
+        consecuencias: "Disminución de árboles frutales.",
+        soluciones: "Reforestación.",
+        ayuda: "Plantar árboles."
+      },
+      {
+        nombre: "Guamúchil",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp7WMfTBFpzZeR84YcA1-jhmlviKnu53HQO7RUD8J-HzQlxZFMsWycYqg&s=10",
+        importancia: "Árbol mexicano que brinda alimento a aves y otros animales.",
+        riesgos: "Urbanización.",
+        consecuencias: "Pérdida de fauna.",
+        soluciones: "Conservar áreas verdes.",
+        ayuda: "Sembrar especies nativas."
+      },
+      {
+        nombre: "Azalea",
+        imagen: "https://www.elicriso.it/es/como_cultivar/azalea/azalea_P1030534.jpg",
+        importancia: "Es una planta ornamental muy apreciada por sus flores coloridas y embellece jardines.",
+        riesgos: "Contaminación y plagas.",
+        consecuencias: "Disminución de áreas verdes.",
+        soluciones: "Brindar mantenimiento adecuado.",
+        ayuda: "Regarla y protegerla de plagas."
+      },
+      {
+        nombre: "Gardenia",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX3s9vDL1afJ7P450Xx5c75Nla-vZEeuYh3cCykYD2qw&s=10",
+        importancia: "Produce flores aromáticas que embellecen parques y jardines.",
+        riesgos: "Plagas y contaminación.",
+        consecuencias: "Pérdida de plantas ornamentales.",
+        soluciones: "Cuidados constantes.",
+        ayuda: "Evitar el uso excesivo de pesticidas."
+      },
+      {
+        nombre: "Hortensia",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwPzzIkzCboIABn4Jcp9bzV7cAYkgWA9T8MJ1XOdWoWg&s=10",
+        importancia: "Es muy utilizada para decorar jardines por sus grandes flores.",
+        riesgos: "Sequías.",
+        consecuencias: "Pérdida de ejemplares.",
+        soluciones: "Riego adecuado.",
+        ayuda: "Ahorrar agua."
+      },
+      {
+        nombre: "Begonia",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkaH5Gr9790r918dw5yNzp5CshXdT5_rTsAUHriG-yPA&s=10",
+        importancia: "Planta ornamental de gran variedad de colores.",
+        riesgos: "Plagas.",
+        consecuencias: "Disminuye su crecimiento.",
+        soluciones: "Mantenimiento constante.",
+        ayuda: "Cultivarla en casa."
+      },
+      {
+        nombre: "Petunia",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMhXqjTxLVpr5Y61R1TFyUAlF-e0j1sYW9Gwj2DzIgKA&s=10g",
+        importancia: "Atrae abejas y mariposas, favoreciendo la polinización.",
+        riesgos: "Contaminación.",
+        consecuencias: "Menos polinizadores.",
+        soluciones: "Reducir pesticidas.",
+        ayuda: "Sembrar flores."
+      },
+      {
+        nombre: "Pensamiento",
+        imagen: "https://framerusercontent.com/images/yk8auBgGBILmUX1NCVofpYJQO8.jpg?width=2245&height=1587",
+        importancia: "Flor ornamental muy utilizada en parques y jardines.",
+        riesgos: "Cambios extremos de temperatura.",
+        consecuencias: "Menor floración.",
+        soluciones: "Cuidados adecuados.",
+        ayuda: "Regarla correctamente."
+      },
+      {
+        nombre: "Lirio",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3YpFEU4QpkZeCy5okGQ-0sl4TKi2kMHvCF6YnD_i6QA&s=10",
+        importancia: "Flor ornamental muy apreciada por su belleza.",
+        riesgos: "Plagas.",
+        consecuencias: "Pérdida de flores.",
+        soluciones: "Control natural de plagas.",
+        ayuda: "Cuidar jardines."
+      },
+      {
+        nombre: "Narciso",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS82dkM1BlvUHAgHiq-q6mLEBfwcWHWCkuHxcJlVeKA-g&s=10",
+        importancia: "Embellece jardines y parques.",
+        riesgos: "Contaminación.",
+        consecuencias: "Menor biodiversidad.",
+        soluciones: "Conservar áreas verdes.",
+        ayuda: "Sembrar flores."
+      },
+      {
+        nombre: "Violeta",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQriJI6CqtL7EYSI_aIMiUuPQKYSj7d6H0TwckNSIKX-g&s=10",
+        importancia: "Planta ornamental y medicinal muy conocida.",
+        riesgos: "Pérdida de hábitat.",
+        consecuencias: "Menos flores.",
+        soluciones: "Cultivo doméstico.",
+        ayuda: "Sembrarla en macetas."
+      },
+      {
+        nombre: "Helecho",
+        imagen: "https://dejardines.com/wp-content/uploads/2-HR-Helechos-herbaceos-011.jpg",
+        importancia: "Purifica el aire y mantiene la humedad.",
+        riesgos: "Deforestación.",
+        consecuencias: "Pérdida de biodiversidad.",
+        soluciones: "Conservar bosques.",
+        ayuda: "No extraerlos de la naturaleza."
+      },
+      {
+        nombre: "Poto",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzyDIJVkTtRLA6If21-oVwgiM3crE-HRcoMqeauQRU8g&s=10",
+        importancia: "Ayuda a purificar el aire en interiores.",
+        riesgos: "Malos cuidados.",
+        consecuencias: "Disminuye su crecimiento.",
+        soluciones: "Riego moderado.",
+        ayuda: "Cultivarlo en casa."
+      },
+      {
+        nombre: "Lengua de Suegra",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-87UB1pKy-k4TeFGAVz6JUKIA7mK-UJBq5iBqwuKvVw&s=10",
+        importancia: "Produce oxígeno y mejora la calidad del aire.",
+        riesgos: "Exceso de agua.",
+        consecuencias: "Daño a la planta.",
+        soluciones: "Riego moderado.",
+        ayuda: "Cuidar plantas de interior."
+      },
+      {
+        nombre: "Cuna de Moisés",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvza2YaT6kpYkq2notCTROHe8Wg5w_83axVvknIT7YKA&s=10",
+        importancia: "Es excelente para purificar el aire.",
+        riesgos: "Falta de agua.",
+        consecuencias: "Marchitamiento.",
+        soluciones: "Riego constante.",
+        ayuda: "Mantenerla en sombra."
+      },
+      {
+        nombre: "Monstera",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3eSPLONyZ_waLnjjwF6pn1dzHEBwnUd5oJClja6PSYw&s=10",
+        importancia: "Muy popular como planta de interior.",
+        riesgos: "Temperaturas extremas.",
+        consecuencias: "Daño en las hojas.",
+        soluciones: "Mantenerla en interiores.",
+        ayuda: "Regarla adecuadamente."
+      },
+      {
+        nombre: "Geranio",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlvOspO98VaFOXmmHNwJK_SsVw3JQ-NmIti-KCcMJJtg&s=10",
+        importancia: "Embellece jardines y balcones.",
+        riesgos: "Sequía.",
+        consecuencias: "Menor floración.",
+        soluciones: "Riego adecuado.",
+        ayuda: "Sembrar flores."
+      },
+      {
+        nombre: "Dalia",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwYQyHTxlxbdukcOuMlY-PKfbyvyiSMAKr61UEu85vKg&s=10",
+        importancia: "Es la flor nacional de México y atrae polinizadores.",
+        riesgos: "Pesticidas.",
+        consecuencias: "Disminución de insectos benéficos.",
+        soluciones: "Reducir químicos.",
+        ayuda: "Sembrar dalias."
+      },
+      {
+        nombre: "Flor de Nochebuena",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3tmqkDCyNv3TZHOmb-Rcc-exhZEtPSwQEHLI85_ZdWg&s=10",
+        importancia: "Planta originaria de México muy representativa de la Navidad.",
+        riesgos: "Pérdida de hábitat.",
+        consecuencias: "Menor conservación.",
+        soluciones: "Cultivo responsable.",
+        ayuda: "Comprar plantas cultivadas legalmente."
+      },
+      {
+        nombre: "Malva",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM4CyMt3bJ38htsArWE_UiWmh_9QPlDzEL-b1OZE7qhA&s=10",
+        importancia: "Posee propiedades medicinales y ornamentales.",
+        riesgos: "Contaminación.",
+        consecuencias: "Menor disponibilidad.",
+        soluciones: "Cultivarla.",
+        ayuda: "Cuidar áreas verdes."
+      },
+      {
+        nombre: "Amapola",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEu6a1-O0KlGN_rQ1ofXLOZgv9qVgJQ10ef9Swde_GWw&s=10",
+        importancia: "Flor muy importante para los polinizadores.",
+        riesgos: "Uso de herbicidas.",
+        consecuencias: "Pérdida de flores silvestres.",
+        soluciones: "Reducir químicos.",
+        ayuda: "Proteger praderas."
+      },
+      {
+        nombre: "Lantana",
+        imagen: "https://cloudfront-us-east-1.images.arcpublishing.com/elespectador/XVV4CGHRZBDFXFVV4CSYOQLNWQ.jpg",
+        importancia: "Atrae mariposas y abejas.",
+        riesgos: "Contaminación.",
+        consecuencias: "Menos polinizadores.",
+        soluciones: "Sembrar más flores.",
+        ayuda: "Cuidar jardines."
+      },
+      {
+        nombre: "Verbena",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw78fCpEA78jTxcI35GXUi4weFWQrBJIyuKRoRoEzqHA&s=10",
+        importancia: "Planta ornamental que favorece la polinización.",
+        riesgos: "Sequías.",
+        consecuencias: "Menor floración.",
+        soluciones: "Riego adecuado.",
+        ayuda: "Sembrarla en jardines."
+      },
+      {
+        nombre: "Lavatéra",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt8HJgFOL7gaYC0U08os54i598b5Sj6WkrJwNpmG7gHQ&s=10",
+        importancia: "Produce flores grandes que atraen insectos benéficos.",
+        riesgos: "Cambio climático.",
+        consecuencias: "Disminución de ejemplares.",
+        soluciones: "Conservar jardines.",
+        ayuda: "Regarla correctamente."
+      },
+      {
+        nombre: "Azucena",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1QXo6RpR3ff5tIrSrFy9TxjrzRQ-AnnzMul8pDcP6wQ&s=10",
+        importancia: "Planta ornamental muy apreciada por sus flores y aroma.",
+        riesgos: "Contaminación y pérdida de hábitat.",
+        consecuencias: "Menor biodiversidad.",
+        soluciones: "Conservar jardines y áreas verdes.",
+        ayuda: "Evitar arrancar flores silvestres."
+      },
+      {
+        nombre: "Duranta",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0tQfJ24RbT_6YWLT4Za8eF1m1Kot34imZU2h9qAWgsA&s=10",
+        importancia: "Arbusto ornamental que atrae mariposas.",
+        riesgos: "Poda inadecuada.",
+        consecuencias: "Menor floración.",
+        soluciones: "Realizar podas correctas.",
+        ayuda: "Cuidar jardines."
+      },
+      {
+        nombre: "Flor de Mayo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfYN238T3ck90DaDU6dG5vhzU0o1iGXJoG2J5fs-IroA&s=10",
+        importancia: "Árbol ornamental con flores aromáticas.",
+        riesgos: "Deforestación.",
+        consecuencias: "Pérdida de áreas verdes.",
+        soluciones: "Reforestar.",
+        ayuda: "Sembrar árboles."
+      },
+      {
+        nombre: "Palo Dulce",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_m7NryAAW-OYLHyu0DNIndFdn8R0-1ZHINv2jq2SsOQ&s=10",
+        importancia: "Árbol medicinal muy utilizado en México.",
+        riesgos: "Sobreexplotación.",
+        consecuencias: "Disminución de ejemplares.",
+        soluciones: "Cultivo responsable.",
+        ayuda: "No talarlo."
+      },
+      {
+        nombre: "Copal",
+        imagen: "https://www.biodiversidad.gob.mx/media/1/usos/images/IDG1285-Bursera.jpg",
+        importancia: "Árbol utilizado para producir resina aromática.",
+        riesgos: "Tala excesiva.",
+        consecuencias: "Pérdida de bosques.",
+        soluciones: "Protección forestal.",
+        ayuda: "Participar en reforestaciones."
+      },
+      {
+        nombre: "Palo Fierro",
+        imagen: "https://www.picturethisai.com/wiki-image/1080/153992809739714567.jpeg",
+        importancia: "Árbol resistente del norte de México que protege el suelo.",
+        riesgos: "Tala ilegal.",
+        consecuencias: "Pérdida del ecosistema desértico.",
+        soluciones: "Conservar zonas áridas.",
+        ayuda: "Evitar la tala."
+      },
+      {
+        nombre: "Sábila Morada",
+        imagen: "https://www.miraflores.gob.pe/wp-content/uploads/2022/05/DSC7108-1024x684.jpg",
+        importancia: "Planta ornamental resistente y fácil de cuidar.",
+        riesgos: "Contaminación del suelo.",
+        consecuencias: "Pérdida de vegetación urbana.",
+        soluciones: "Mantener jardines saludables.",
+        ayuda: "Cultivarla en casa."
+      },
+      {
+        nombre: "Pasto Vetiver",
+        imagen: "https://abanuc.com/cdn/shop/articles/Vetiver.jpg?v=1580116807",
+        importancia: "Ayuda a evitar la erosión del suelo y conservar el agua.",
+        riesgos: "Incendios y cambio de uso de suelo.",
+        consecuencias: "Mayor erosión.",
+        soluciones: "Conservar áreas verdes.",
+        ayuda: "Apoyar programas de reforestación."
+      },
+      {
+        nombre: "Muérdago",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVYQ3a0CKk39f-bYKa61JEbkvnFNZMkflg-8c5fbSKPA&s=10",
+        importancia: "Es una planta que sirve de alimento y refugio para diversas aves y contribuye a la biodiversidad.",
+        riesgos: "La tala de árboles donde crece.",
+        consecuencias: "Disminuye el alimento disponible para algunas especies.",
+        soluciones: "Proteger los bosques y árboles maduros.",
+        ayuda: "Evitar la tala innecesaria."
+      },
+      {
+        nombre: "Madroño",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS37RLt87MoD_KqKmNm7nEA_g6IW9dJyoeWO4s1yiP8Lw&s=10",
+        importancia: "Árbol nativo de México que produce frutos para la fauna silvestre y ayuda a conservar los bosques.",
+        riesgos: "Incendios forestales y deforestación.",
+        consecuencias: "Pérdida de hábitat para muchas especies.",
+        soluciones: "Promover la reforestación.",
+        ayuda: "Participar en campañas de conservación."
+      },
+      {
+        nombre: "Palo Mulato",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsO97Q-HkK6XlCqded1SD6smuA0iiIUTTmw-dKLk72-A&s=10",
+        importancia: "Árbol tropical que ayuda a conservar el suelo y proporciona refugio a la fauna.",
+        riesgos: "La tala y el cambio de uso de suelo.",
+        consecuencias: "Reducción de los ecosistemas tropicales.",
+        soluciones: "Proteger las selvas y promover la reforestación.",
+        ayuda: "Evitar la destrucción de áreas naturales."
+      },
+      {
+        nombre: "Árbol del Amor",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQib0F2rxTeh71rhALKVb_J6ez9eXMYYVSTdcm3SrWBew&s=10",
+        importancia: "El árbol del amor es una especie ornamental muy apreciada por sus flores rosadas. Ayuda a embellecer parques y jardines, además de atraer abejas.",
+        riesgos: "La contaminación, las sequías prolongadas y la tala reducen su presencia.",
+        consecuencias: "Disminuyen las áreas verdes y los recursos para los polinizadores.",
+        soluciones: "Promover su plantación en parques, jardines y zonas urbanas.",
+        ayuda: "Cuidar los árboles existentes, participar en campañas de reforestación y evitar dañar las áreas verdes."
+      },
+
+      // --- 100 ESPECIES NUEVAS SIN REPETIR (73 - 172) ---
+      {
+        nombre: "Baobab",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMTP_HXIJ1r55HbcgN9vLhBvDquwwxM9YQsWGEWgV3Hw&s=10",
+        importancia: "Almacena grandes cantidades de agua en su tronco y alimenta a múltiples especies africanas.",
+        riesgos: "El cambio climático y las sequías severas están destruyendo ejemplares centenarios.",
+        consecuencias: "Pérdida de hábitat y reservorios naturales de agua en zonas áridas.",
+        soluciones: "Crear reservas protegidas y promover estudios de conservación climática.",
+        ayuda: "Apoyar a organizaciones de conservación de la flora africana."
+      },
+      {
+        nombre: "Secuoya Gigante",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzmvhgLkPo10UGusRb_LJLQ08YvRjaM8ewAgRoDceAeg&s=10",
+        importancia: "Son los árboles más masivos de la Tierra y capturan enormes toneladas de carbono.",
+        riesgos: "Incendios forestales de gran intensidad y sequías prolongadas.",
+        consecuencias: "Disminución de los sumideros de carbono más antiguos del planeta.",
+        soluciones: "Gestión forestal preventiva y quema controlada de maleza.",
+        ayuda: "Evitar fogatas en áreas de bosques protegidos."
+      },
+      {
+        nombre: "Lárice",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ8fRGUp1RZM5AV9BXZFEli9xzkWI5veK1D2aHeKfn9A&s=10",
+        importancia: "Es de las pocas coníferas caducifolias; estabiliza suelos en regiones frías del norte.",
+        riesgos: "Plagas de insectos exacerbadas por el aumento de temperaturas.",
+        consecuencias: "Erosión de suelos subárticos y pérdida de cobertura forestal.",
+        soluciones: "Control biológico de plagas y reforestación de áreas dañadas.",
+        ayuda: "Participar en iniciativas de protección ambiental alpina."
+      },
+      {
+        nombre: "Ginkgo Biloba",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTx3SH6RTSqfmxIytgl3O-y5JcgokOv_EB6pliYsl2_7A&s=10",
+        importancia: "Fósil viviente extremadamente resistente a la contaminación urbana y medicinal.",
+        riesgos: "Baja diversidad genética al propagarse casi exclusivamente por clonación urbana.",
+        consecuencias: "Vulnerabilidad ante posibles epidemias de hongos o bacterias.",
+        soluciones: "Promover la germinación por semilla para diversificar su genética.",
+        ayuda: "Plantar ejemplares genéticamente variados en espacios urbanos."
+      },
+      {
+        nombre: "Caoba",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW5FJTuXzo5eARN04x_CPBG2Z_PlsCkH343YwxubOrXw&s=10",
+        importancia: "Especie clave en bosques tropicales que proporciona sombra a estratos inferiores.",
+        riesgos: "Tala ilegal masiva debido al alto valor de su madera.",
+        consecuencias: "Deforestación acelerada de selvas tropicales e hidrología alterada.",
+        soluciones: "Leyes estrictas contra la tala y trazabilidad del comercio maderero.",
+        ayuda: "No comprar muebles de madera fina de origen no certificado."
+      },
+      {
+        nombre: "Arce Rojo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjJq9xsciWL3uCY7ZOzSEO-r7PqG6fH3vJJguViVeNVg&s=10",
+        importancia: "Proporciona alimento a la fauna a inicios de primavera y absorbe contaminantes.",
+        riesgos: "Urbanización desmedida y expansión de plagas invasoras.",
+        consecuencias: "Disminución del dosel urbano y mayor temperatura ambiental.",
+        soluciones: "Proteger bosques templados e integrar zonas verdes en planes urbanos.",
+        ayuda: "Cuidar los árboles de los parques locales."
+      },
+      {
+        nombre: "Abedul Blanco",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR78SLAxzjWDT4bV8u_8dVgrzZAWouI6tnZbU6hsislXw&s=10",
+        importancia: "Especie pionera que regenera suelos quemados o deforestados.",
+        riesgos: "Susceptibilidad a barrenadores de la madera durante periodos de sequía.",
+        consecuencias: "Lentitud en el proceso natural de regeneración forestal.",
+        soluciones: "Asegurar un manejo sostenible de cuencas e hídrico.",
+        ayuda: "Promover la reforestación nativa en zonas devastadas."
+      },
+      {
+        nombre: "Castaño de Indias",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcg0cvEBX7IFK2BOUxXhyC4ylSpQ1889-mX8mAN8Od8Q&s=10",
+        importancia: "Proporciona sombra en avenidas y extractos para la circulación sanguínea.",
+        riesgos: "Ataques de la polilla minadora de la hoja de castaño.",
+        consecuencias: "Caída prematura de hojas y debilitamiento del árbol.",
+        soluciones: "Tratamientos biológicos ecológicos en zonas urbanas.",
+        ayuda: "Notificar a autoridades forestales sobre árboles enfermos."
+      },
+      {
+        nombre: "Árbol del Cacao",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNUoE6ZfECmfgCuvZ-gWZb7IQB8PqCbYBq_0OCMM0Pzg&s",
+        importancia: "Base de la industria chocolatera y cultivo fundamental en agrosilvicultura.",
+        riesgos: "Cambio climático, sequías y la enfermedad de la 'escoba de bruja'.",
+        consecuencias: "Crisis socioeconómica para agricultores y pérdida de biodiversidad agrícola.",
+        soluciones: "Técnicas agroecológicas de cultivo bajo sombra.",
+        ayuda: "Consumir chocolate de comercio justo y sostenible."
+      },
+      {
+        nombre: "Árbol del Caucho",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQahtALPGf8HtYfyxYZiDYO5h2BdWRdlHRLwQ4hKdhMIwGBQM1UrR0sbE0f&s=10",
+        importancia: "Fuente natural de látex e importante captador de CO2 en el trópico.",
+        riesgos: "Monocultivos intensivos que desgastan los nutrientes del suelo.",
+        consecuencias: "Erosión severa del suelo y vulnerabilidad a plagas fúngicas.",
+        soluciones: "Diversificar los cultivos de caucho con vegetación nativa.",
+        ayuda: "Apoyar productos elaborados con caucho sustentable."
+      },
+      {
+        nombre: "Ciprés de los Pantanos",
+        imagen: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhERanNg52Dn2bfyLXdpQe9snV2PhwWQF2F1TSu9GGEqmX64iy57che_wIRc8vEt31tfPK8OtwxecbGrvG3OdbKRavnumjpDFxAMgiVsBh95iMBCXUFBl8Ieky3yDSF2sg3ZaTWRqbNqro/s1600/P1060133.JPG",
+        importancia: "Sus raíces estabilizan humedales y previenen inundaciones graves.",
+        riesgos: "Drenaje de humedales para desarrollos inmobiliarios o agrícolas.",
+        consecuencias: "Inundaciones severas e incremento de salinidad en acuíferos.",
+        soluciones: "Proteger por ley las zonas de humedales marismas.",
+        ayuda: "Evitar la contaminación de ríos y lagunas costeras."
+      },
+      {
+        nombre: "Árbol del Pan",
+        imagen: "https://blog.laminasyaceros.com/hs-fs/hubfs/D_NQ_NP_760653-MLM43775256391_102020-O.jpg?width=583&name=D_NQ_NP_760653-MLM43775256391_102020-O.jpg",
+        importancia: "Produce frutos muy nutritivos que alimentan a comunidades tropicales.",
+        riesgos: "Ciclones cada vez más fuertes que destruyen los huertos tradicionales.",
+        consecuencias: "Inseguridad alimentaria en zonas insulares y costeras.",
+        soluciones: "Promover la siembra de barreras cortavientos con especies nativas.",
+        ayuda: "Apoyar proyectos de soberanía alimentaria global."
+      },
+      {
+        nombre: "Tamarindo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsBRW8acMJGPhWkFhE6iyYLWePBulTS640NssMNV4E6g&s=10",
+        importancia: "Árbol frutal resistente a sequías que enriquece el suelo con nitrógeno.",
+        riesgos: "Conversión de tierras a agricultura mecanizada intensiva.",
+        consecuencias: "Pérdida de sombra natural y desertificación de suelos arables.",
+        soluciones: "Integrar el tamarindo en sistemas agropastoriles.",
+        ayuda: "Consumir alimentos y productos locales derivados."
+      },
+      {
+        nombre: "Enebro",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDN11naMVVDl8pU-35ECEUMLJBRY12z2O24pH6chdXMA&s=10",
+        importancia: "Sus gálbulos alimentan a la fauna invernal y previenen la erosión en montañas.",
+        riesgos: "Incendios forestales recurrentes por abandono del campo.",
+        consecuencias: "Pérdida de la capa vegetal en pendientes pronunciadas.",
+        soluciones: "Mantenimiento y desbroce de montes comunitarios.",
+        ayuda: "Practicar senderismo de manera responsable."
+      },
+      {
+        nombre: "Alcornoque",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5NxCkNGqhR1SQHT9ipvbg2te6lzn5ESHnE7ErZUXSkQ&s=10",
+        importancia: "Produce corcho de forma sostenible sin necesidad de cortar el árbol.",
+        riesgos: "Sustitución del corcho por plásticos sintéticos y sequías.",
+        consecuencias: "Abandono de las dehesas y pérdida de hábitat del lince y águila.",
+        soluciones: "Apoyar la industria del corcho natural certificado.",
+        ayuda: "Elegir productos embotellados con corcho natural."
+      },
+      {
+        nombre: "Higuera Silvestre",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeUqepcjZHwQehKPiviE6MbqNLBxH4lrfndotFKEyWQg&s=10",
+        importancia: "Sus frutos alimentan a más de mil especies de aves y mamíferos.",
+        riesgos: "Eliminación por considerarse maleza en zonas agrícolas.",
+        consecuencias: "Cadena alimenticia interrumpida para aves frugívoras.",
+        soluciones: "Educación ambiental sobre el valor ecológico de la higuera.",
+        ayuda: "Respetar las higueras en bordes de caminos y campos."
+      },
+      {
+        nombre: "Cerezal Silvestre",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBgdZqGDxvo7TSVxol8gn-_TAp4bBa_HAZGUMUaDKZYA&s=10",
+        importancia: "Aporta belleza, alimento de primavera y refugio a polinizadores.",
+        riesgos: "Tala para ampliación de áreas urbanas.",
+        consecuencias: "Reducción de alimento temprano para polinizadores.",
+        soluciones: "Reforestación urbana con especies frutales silvestres.",
+        ayuda: "Plantar árboles florales en jardines amplios."
+      },
+      {
+        nombre: "Castaño Común",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfdGzZq1jW5_BGkg3HS7CJVXQ46NNuMAWcf42d7BnzXA&s=10",
+        importancia: "Proporciona castañas nutritivas y madera de alta durabilidad.",
+        riesgos: "Enfermedades fúngicas graves como la tinta del castaño.",
+        consecuencias: "Muerte masiva de bosques centenarios.",
+        soluciones: "Investigación y plantación de variedades resistentes.",
+        ayuda: "Evitar transportar madera de origen desconocido."
+      },
+      {
+        nombre: "Liquidámbar",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM1YAPlQcjxIvnaXP4cQPloyUtCt-CtKjXQhVhOenWUg&s=10",
+        importancia: "Gran capacidad para capturar metales pesados en suelos urbanos.",
+        riesgos: "Espacios reducidos para sus raíces en ciudades que provocan su tala.",
+        consecuencias: "Aumento del efecto isla de calor urbana.",
+        soluciones: "Diseño urbano con alcorques amplios y permeables.",
+        ayuda: "Solicitar más áreas verdes en tu vecindario."
+      },
+      {
+        nombre: "Tejo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmhkA-3_nRJourmz2qWWBx-DTJ3AiFI3yOxZX-_u-w4g&s=10",
+        importancia: "Árbol ancestral de gran longevidad que produce un potente fármaco anticancerígeno.",
+        riesgos: "Sobreexplotación histórica y lento crecimiento.",
+        consecuencias: "Peligro de desaparición de tejedas ancestrales.",
+        soluciones: "Protección legal estricta de ejemplares vetustos.",
+        ayuda: "No recolectar ni dañar hojas o corteza de tejo."
+      },
+      {
+        nombre: "Árbol del Neem Dorado",
+        imagen: "https://i0.wp.com/conaplor.com.mx/wp-content/uploads/2017/09/Arbol-de-neem.jpg?resize=1080%2C675&ssl=1",
+        importancia: "Variedad ornamental que purifica el aire de contaminantes complejos.",
+        riesgos: "Uso indiscriminado de poda drástica.",
+        consecuencias: "Debilitamiento estructural y ataque de bacterias.",
+        soluciones: "Capacitar a personal de jardinería pública.",
+        ayuda: "Evitar la poda excesiva de árboles en casa."
+      },
+      {
+        nombre: "Naranjo Agrio",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqBQUNiuzxPVdyJGQHJ1CoK8Uy5s_sAfuDJqKFIUY14w&s=10",
+        importancia: "Su flor (azahar) es vital para abejas y la industria del perfume.",
+        riesgos: "Plaga de la tristeza de los cítricos.",
+        consecuencias: "Pérdida de huertos urbanos e históricos.",
+        soluciones: "Uso de patrones resistentes en el injerto.",
+        ayuda: "Cuidar los árboles cítricos de las heladas."
+      },
+      {
+        nombre: "Guayacán Amarillo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkKuETohTFbnzAW7A264Z4JMO39XaFJBSXAy83XHoozg&s",
+        importancia: "Floración masiva que alimenta mariposas y abejas en el trópico.",
+        riesgos: "Tala selectiva por la densidad extrema de su madera.",
+        consecuencias: "Pérdida del espectáculo natural y desequilibrio faunístico.",
+        soluciones: "Reforestación masiva en avenidas y parques sub-tropicales.",
+        ayuda: "Apreciar y tomar fotos sin cortar sus ramas floridas."
+      },
+      {
+        nombre: "Árbol de la Nuez Moscada",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTPS3ZVz1BwfQkSknUoxKuwEOrbvydjASLCMHCcFORb90BYhNxW1Yx11WhCbbmpNsOgPInalQBuJ1rP1o62zmbsvr3GxiVDkAuscHYKw&s=10",
+        importancia: "Origen de las especias nuez moscada y macis, con valor medicinal.",
+        riesgos: "Monocultivo y vulnerabilidad ante tormentas tropicales.",
+        consecuencias: "Escasez de la especie y pérdida económica agrícola.",
+        soluciones: "Diversificación de los huertos de especias.",
+        ayuda: "Comprar especias de origen sostenible."
+      },
+      {
+        nombre: "Zapote Blanco",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVdj-UNurKJQKXiT5_z7GbIMIe-iuys0SqUxyRoVSVfQ&s=10",
+        importancia: "Produce frutos dulces comestibles y sus hojas tienen efecto sedante suave.",
+        riesgos: "Desplazamiento por edificaciones en valles centrales.",
+        consecuencias: "Pérdida de un recurso frutal nativo tradicional.",
+        soluciones: "Fomentar su siembra en huertos familiares.",
+        ayuda: "Consumir y germinar semillas de frutas nativas."
+      },
+      {
+        nombre: "Palo de Tinte",
+        imagen: "https://www.meridadeyucatan.com/wp-content/uploads/2018/10/PALO-DE-TINTE.jpg",
+        importancia: "Históricamente utilizado para extraer tintes naturales para textiles.",
+        riesgos: "Sustitución por colorantes sintéticos contaminantes.",
+        consecuencias: "Abandono de la conservación de esta especie en selvas húmedas.",
+        soluciones: "Revitalizar la industria de tintes naturales ecológicos.",
+        ayuda: "Apoyar la moda y textiles sustentables."
+      },
+      {
+        nombre: "Árbol del Clavo",
+        imagen: "https://thumbs.dreamstime.com/b/clavo-de-olor-en-la-estaci%C3%B3n-lluvias-lampung-indonesia-un-%C3%A1rbol-a%C3%B1os-todav%C3%ADa-est%C3%A1-proceso-tratamiento-para-concepci%C3%B3n-219783429.jpg",
+        importancia: "Sus botones florales secos son un potente antiséptico y anestésico natural.",
+        riesgos: "Enfermedades fúngicas en suelos con mal drenaje.",
+        consecuencias: "Pérdida de cultivos medicinales clave.",
+        soluciones: "Uso de compost orgánico y drenajes bio-diseñados.",
+        ayuda: "Usar medicina natural de forma responsable."
+      },
+      {
+        nombre: "Hule Silvestre",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTBqNhQ8DW1MtNQ7K5mw4Rn8KGhRxWgXh1Ir4DsT_v5A&s=10",
+        importancia: "Árbol nativo mesoamericano clave para rituales ancestrales y ecosistemas.",
+        riesgos: "Tala para ganadería extensiva.",
+        consecuencias: "Destrucción de corredores biológicos.",
+        soluciones: "Creación de reservas privadas de conservación.",
+        ayuda: "Apoyar proyectos de reforestación comunitaria."
+      },
+      {
+        nombre: "Árbol del Pistache",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnQLiJw0V22VS1k-dnLLP_5MBBDkO2xxxmX9ZblXpTow&s",
+        importancia: "Produce frutos secos altamente nutritivos en regiones semiáridas.",
+        riesgos: "Olas de calor extremo durante la etapa de polinización.",
+        consecuencias: "Frutos vacíos y bajo rendimiento agrícola.",
+        soluciones: "Técnicas de micro-riego eficientes.",
+        ayuda: "Ahorrar agua para consumo general."
+      },
+      {
+        nombre: "Arrayán",
+        imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b",
+        importancia: "Su corteza canela y flores aromáticas embellecen y refrescan bosques templados.",
+        riesgos: "Incendios por turismo no regulado.",
+        consecuencias: "Degradación de bosques únicos de arrayanes.",
+        soluciones: "Turismo guiado y senderos delimitados.",
+        ayuda: "No dejar basura en parques nacionales."
+      },
+      {
+        nombre: "Mesquite Dulce",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtl1NHVlS8B3egMJ1yd4K3dqxhpxb4u8oPbXHv8kylxw&s=10",
+        importancia: "Fija nitrógeno en zonas desérticas y sus vainas producen harina alimenticia.",
+        riesgos: "Tala para producción de carbón vegetal.",
+        consecuencias: "Aceleración de la desertificación.",
+        soluciones: "Prohibir la venta de carbón de mezquite de origen ilegal.",
+        ayuda: "Utilizar alternativas sostenibles para cocinar."
+      },
+      {
+        nombre: "Árbol del Caqui",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRotC5iWcjcKgkVyDmfCcQ2hovDboRIDYUcYi1S67SGoQ&s=10",
+        importancia: "Fruta otoñal rica en antioxidantes que alimenta a aves migratorias.",
+        riesgos: "Abandono de cultivos tradicionales por falta de rentabilidad.",
+        consecuencias: "Pérdida de variedades tradicionales de fruta.",
+        soluciones: "Fomentar mercados de productores locales.",
+        ayuda: "Comprar directamente a agricultores de tu zona."
+      },
+      {
+        nombre: "Chaparro Mandeno",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjoCugepnPItWOnhnm-psodIkgK4CkMbtKpnlqtgOpgA&s=10",
+        importancia: "Resiste incendios recurrentes y rebrota rápidamente para proteger el suelo.",
+        riesgos: "Pastoreo intensivo de ganado que se come los brotes tiernos.",
+        consecuencias: "Erosión e imposibilidad de regenerar el matorral.",
+        soluciones: "Cercado rotativo de pastizales.",
+        ayuda: "Consumir carne proveniente de ganadería sustentable."
+      },
+      {
+        nombre: "Sauce Llorón",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsn0SCgzrFZpk5k9Je8cZ_9syKzRZIiJtXxfxgzRID-A&s=10",
+        importancia: "Filtra agua en riberas y sus raíces estabilizan los cauces de ríos.",
+        riesgos: "Secado de ríos por sobreexplotación de acuíferos.",
+        consecuencias: "Muerte de bosques de galería y colapso de riberas.",
+        soluciones: "Uso responsable del agua a nivel cuenca.",
+        ayuda: "Reducir el consumo diario de agua potable."
+      },
+      {
+        nombre: "Árbol de la Cera",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNhx7tjL_UrP0YLOwsoFiOftctkm7rRJ9b0aomPnpHOA&s=10",
+        importancia: "Sus frutos producen una cera vegetal usada tradicionalmente sin tóxicos.",
+        riesgos: "Desplazamiento por ceras sintéticas derivadas del petróleo.",
+        consecuencias: "Menos uso de insumos biodegradables.",
+        soluciones: "Impulsar productos cosméticos ecológicos nativos.",
+        ayuda: "Preferir velas y cosméticos con ingredientes naturales."
+      },
+      {
+        nombre: "Poleo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDxHwrkvGxGGh31ZFNrzZxrZC7Rm6Bmvdm-n1XcB5yzg&s=10",
+        importancia: "Hierba aromática que alivia molestias digestivas y espasmos.",
+        riesgos: "Uso indiscriminado de herbicidas en orillas de caminos.",
+        consecuencias: "Contaminación de plantas silvestres comestibles.",
+        soluciones: "Fomentar el deshierbe manual o mecánico sin químicos.",
+        ayuda: "No recolectar plantas medicinales cerca de carreteras."
+      },
+      {
+        nombre: "Toronjil",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1xiUdoARIKxi6mfnpddi04MOMrPrY1rAN1oaaOMGcvA&s=10",
+        importancia: "Excelente tranquilizante natural para tratar el insomnio y el estrés.",
+        riesgos: "Pérdida de hábitats húmedos por sequía.",
+        consecuencias: "Escasez de la planta en estado silvestre.",
+        soluciones: "Cultivo doméstico en macetas y huertos familiares.",
+        ayuda: "Tener tu propio huerto de infusiones en casa."
+      },
+      {
+        nombre: "Ruda Silvestre",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiTyV4Npma6XuQtYcirYZrG-sV_KHPH6ZYxdF8-BAuKg&s=10",
+        importancia: "Repelente natural de plagas e insectos en la agricultura orgánica.",
+        riesgos: "Arranque de raíz por mitos sobre su mal uso.",
+        consecuencias: "Disminución de polinizadores especializados que la visitan.",
+        soluciones: "Promover talleres sobre sus verdaderos beneficios agrícolas.",
+        ayuda: "Utilizar macerado de ruda como insecticida casero."
+      },
+      {
+        nombre: "Boldo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDnkSNIKJxDxV5xH7Fp65WkRUAjcvOfXkXMClhYUZh4g&s=10",
+        importancia: "Sus hojas son altamente protectoras de la función hepática.",
+        riesgos: "Sobreexplotación de hojas en sus bosques nativos.",
+        consecuencias: "Defoliación extrema que mata los arbustos.",
+        soluciones: "Cosecha rotativa y sostenible.",
+        ayuda: "Consumir té de boldo proveniente de marcas certificadas."
+      },
+      {
+        nombre: "Hierba del Golpe",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQTpxJ2D6Ewjwvtc6ZQ5qusYHzs8gqk6-20K943lJXBg&s=10",
+        importancia: "Desinflama contusiones y acelera la cicatrización de heridas ligeras.",
+        riesgos: "Pérdida de áreas de matorral por expansión urbana.",
+        consecuencias: "Menos acceso a medicina tradicional de bajo costo.",
+        soluciones: "Rescatar la botánica médica tradicional en jardines comunitarios.",
+        ayuda: "Aprender sobre las plantas medicinales locales."
+      },
+      {
+        nombre: "Estevia Silvestre",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdNNZvR5YHVbOZPtykRHwhCN8j1jp6u_b3hh-Jzc78Ow&s=10",
+        importancia: "Endulzante natural sin calorías con propiedades reguladoras de glucosa.",
+        riesgos: "Patentado y monopolización de semillas por corporaciones.",
+        consecuencias: "Pérdida del derecho de comunidades nativas sobre la planta.",
+        soluciones: "Proteger el germoplasma nativo como patrimonio público.",
+        ayuda: "Cultivar estevia de variedad libre en casa."
+      },
+      {
+        nombre: "Cardo Mariano",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQge5gtAoRmZ3l2WMXYyGLmdDmtwDvSs2ArcLjdDuq6Ng&s=10",
+        importancia: "La silimarina de sus semillas regenera las células del hígado.",
+        riesgos: "Considerada una 'maleza destructiva' y eliminada masivamente.",
+        consecuencias: "Reducción de alimento para jilgueros y polinizadores.",
+        soluciones: "Reconocer el valor ecológico de plantas espinosas.",
+        ayuda: "Dejar zonas silvestres sin cortar en fincas."
+      },
+      {
+        nombre: "Cardo Mariano",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQge5gtAoRmZ3l2WMXYyGLmdDmtwDvSs2ArcLjdDuq6Ng&s=10",
+        importancia: "Potente adaptógeno que combate el cansancio físico y mental.",
+        riesgos: "Saqueo furtivo en bosques montañosos por su alto valor comercial.",
+        consecuencias: "Riesgo crítico de extinción de poblaciones silvestres.",
+        soluciones: "Sanciones penales severas para la recolección ilegal.",
+        ayuda: "Verificar la trazabilidad de suplementos alimenticios."
+      },
+      {
+        nombre: "Echinacea",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMPPoanpfEjXN1pS1TAaPa4v47_0uhudLx0c08ICEwlA&s=10",
+        importancia: "Estimula el sistema inmunológico contra resfriados y virus.",
+        riesgos: "Pérdida de las praderas nativas donde crece de forma natural.",
+        consecuencias: "Disminución de biodiversidad en praderas templadas.",
+        soluciones: "Fomentar el cultivo comercial para no alterar la silvestre.",
+        ayuda: "Comprar productos con certificaciones orgánicas."
+      },
+      {
+        nombre: "Zarzaparrilla",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOiDg1-ErKTytHMRbV1WujW1EWyN5zlp4eT1UEVymkQ&s",
+        importancia: "Planta depurativa de la sangre y tradicional en refrescos naturales.",
+        riesgos: "Destrucción de sotobosque por maquinaria pesada.",
+        consecuencias: "Extinción local de plantas trepadoras nativas.",
+        soluciones: "Técnicas de manejo forestal con bajo impacto.",
+        ayuda: "Apoyar la conservación de bosques primarios."
+      },
+      {
+        nombre: "Cedrón (Hierba Luisa)",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGkoe_i-JxMkRmDFIaGc9_ZNbSDopc1BqVjMRj7ECkfQ&s=105",
+        importancia: "Poderoso digestivo con aroma cítrico altamente relajante.",
+        riesgos: "Susceptibilidad a las heladas extremas del cambio climático.",
+        consecuencias: "Pérdida de cultivos domésticos de infusión.",
+        soluciones: "Proteger las plantas con invernaderos sencillos en invierno.",
+        ayuda: "Propagar esquejes de cedrón con vecinos."
+      },
+      {
+        nombre: "Eucalipto Limón",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQhW4ajUnvwqt_WcmyqfpXxIz3-aNr_8keSLZFUa_TrQ&s=10",
+        importancia: "Proporciona un aceite esencial excelente como repelente natural de mosquitos.",
+        riesgos: "Riesgo de incendios por la inflamabilidad de sus aceites.",
+        consecuencias: "Propagación rápida del fuego si no se gestiona.",
+        soluciones: "Plantar con distanciamiento adecuado de zonas habitacionales.",
+        ayuda: "Cuidar la limpieza de hojas secas en el jardín."
+      },
+      {
+        nombre: "Ajenjo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRosPxNkQCuFil4sHghDkM9s_seI6z87_udNskvmjHdQ&s=10",
+        importancia: "Base de tónicos amargos para estimular el apetito y eliminar parásitos.",
+        riesgos: "Contaminación del suelo por vertidos industriales.",
+        consecuencias: "Absorción de toxinas que inutilizan su uso medicinal.",
+        soluciones: "Regulación ambiental estricta sobre desechos.",
+        ayuda: "Denunciar tiraderos clandestinos de basura o químicos."
+      },
+      {
+        nombre: "Passiflora (Flor de la Pasión)",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZCPqVifdpDng1SxHl_lsbeM8MmoW2oAZOvM27tyjBqg&s=10",
+        importancia: "Alivia la ansiedad grave y es alimento exclusivo de larvas de mariposa.",
+        riesgos: "Pérdida de vegetación de borde en áreas rurales.",
+        consecuencias: "Desaparición de especies de mariposas espectaculares.",
+        soluciones: "Conservar enredaderas en cercas y bardas.",
+        ayuda: "Dejar crecer enredaderas nativas en las cercas."
+      },
+      {
+        nombre: "Mejorana",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2M2EpWEOsmCraA01ORtubW8lrBz-G5cK9lB2R2EruNw&s=10",
+        importancia: "Hierba culinaria y medicinal con potentes antioxidantes.",
+        riesgos: "Exceso de riego y pudrición de raíz por suelos apelmazados.",
+        consecuencias: "Pérdida de la planta en jardinería urbana.",
+        soluciones: "Uso de sustratos con buen drenaje (arena y compost).",
+        ayuda: "Aprender las necesidades de riego de cada planta."
+      },
+      {
+        nombre: "Salvia Divinorum",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlGyoUyoiruDrG1oIo-ekdfylqXdJGmq8YRN65ca_PwQ&s=10",
+        importancia: "Planta de alto valor etnobotánico y objeto de investigación neurológica.",
+        riesgos: "Extracción ilegal en su único hábitat en bosques de niebla.",
+        consecuencias: "Peligro crítico de extinción de la especie silvestre.",
+        soluciones: "Reserva botánica estricta protegida por comunidades indígenas.",
+        ayuda: "Respetar la flora sagrada y endémica."
+      },
+      {
+        nombre: "Gordolobo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr8QfurItMCfgyPUkiPmh-tkdikkMwVBjLJpkrmxmvhTCRIzqSivskrOo&s=10",
+        importancia: "Tradicionalmente usado para suavizar la garganta y calmar la tos.",
+        riesgos: "Uso de herbicidas en cunetas de carreteras donde crece.",
+        consecuencias: "Disminución de flora silvestre útil.",
+        soluciones: "Mantenimiento ecológico de carreteras.",
+        ayuda: "Evitar el consumo de plantas colectadas en avenidas."
+      },
+      {
+        nombre: "Menta Negra",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQomK3dXVFEgj_WVz7aKNcAk-_UArQZTVPQWcAFNjYIsw&s=10",
+        importancia: "Variedad con alta concentración de mentol para aliviar congestiones.",
+        riesgos: "Sequías prolongadas que queman su follaje delicado.",
+        consecuencias: "Escasez de la planta fresca durante el verano.",
+        soluciones: "Sistemas de captación de agua de lluvia para riego.",
+        ayuda: "Aprovechar el agua de lavar verduras para regar."
+      },
+      {
+        nombre: "Verbena Medicinal",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGOfKSbisaax7uAaeiPaN1d25e8qCmm6WInspG4olD-A&s=10",
+        importancia: "Utilizada desde la antigüedad para calmar dolores de cabeza y migrañas.",
+        riesgos: "Erosión de suelos baldíos por falta de vegetación.",
+        consecuencias: "Pérdida de plantas silvestres melíferas.",
+        soluciones: "Sembrar cubiertas vegetales en lotes vacíos.",
+        ayuda: "Lanzar 'bombas de semillas' en áreas desérticas."
+      },
+      {
+        nombre: "Valeriana Roja",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc7A_6j7m1N8F_qSIQqubxEOD_RTcTx6Ot5wxAT-2CIA&s=10",
+        importancia: "Atrae polinizadores y ayuda a conciliar el sueño.",
+        riesgos: "Competición con plantas exóticas invasoras.",
+        consecuencias: "Desplazamiento de especies locales.",
+        soluciones: "Control manual de especies invasoras en parques.",
+        ayuda: "No sembrar plantas invasoras en el jardín."
+      },
+      {
+        nombre: "Llantén Mayor",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIlDgYvDUZHHVjba_hEHLFcVkPvj5TCZo2db-a704XZg&s=10",
+        importancia: "Sus hojas desinfectan picaduras de insectos y detienen sangrados.",
+        riesgos: "Pisoteo intensivo en céspedes urbanos tratados con químicos.",
+        consecuencias: "Incapacidad de uso medicinal por presencia de pesticidas.",
+        soluciones: "Crear zonas verdes urbanas libres de pesticidas.",
+        ayuda: "Fomentar céspedes naturales sin químicos."
+      },
+      {
+        nombre: "Manzanilla Romana",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiBsIFyguqOB34hLcPFWufURWUgKuCEI_P7bwit4w-6w&s=10",
+        importancia: "Excelente tónico ocular y antiinflamatorio para la piel.",
+        riesgos: "Contaminación por plásticos en los campos de cultivo.",
+        consecuencias: "Microplásticos acumulados en la tierra de cultivo.",
+        soluciones: "Agricultura limpia sin plásticos de un solo uso.",
+        ayuda: "Reducir la compra de envases plásticos."
+      },
+      {
+        nombre: "Cilantro Silvestre",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYr3kKUAXCNQNE2Gqb-8fKeJfN9xDvzIGTU54Ffn2tvw&s=10",
+        importancia: "Saborizante rico en minerales que ayuda a eliminar metales pesados.",
+        riesgos: "Pérdida de la semilla criolla por híbridos comerciales.",
+        consecuencias: "Pérdida de la diversidad de sabores nativos.",
+        soluciones: "Bancos comunales de semillas criollas.",
+        ayuda: "Guardar e intercambiar semillas tradicionales."
+      },
+      {
+        nombre: "Estragón",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnbMV1P1htLWofC8RI9mKSunlVxj5vb7F3fazeTCjl9Q&s=10",
+        importancia: "Estimula la digestión y aporta un sabor anisado único.",
+        riesgos: "Sensibilidad a hongos si se riega en exceso el follaje.",
+        consecuencias: "Pérdida rápida de plantas en huertos urbanos.",
+        soluciones: "Riego directo a las raíces (riego por goteo).",
+        ayuda: "Regar tus plantas al amanecer o atardecer."
+      },
+      {
+        nombre: "Acedera",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE2wXzdUSIh0aMsqTFiqHmITWiG549HQTqt4U73Q9NPQ&s=10",
+        importancia: "Planta rica en vitamina C utilizada para purificar la sangre.",
+        riesgos: "Acumulación de nitratos si se fertiliza con químicos sintéticos.",
+        consecuencias: "Riesgo para la salud si se consume en gran cantidad.",
+        soluciones: "Fertilización exclusiva con compost orgánico.",
+        ayuda: "Elaborar compost casero con restos de comida."
+      },
+      {
+        nombre: "Hinojo Silvestre",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3bLYIMTDYW7ruFMJIJwbXqGnB1zJp3SosriymzsSPfQ&s=10",
+        importancia: "Alivia los cólicos en lactantes y es hospedera de la mariposa Macaón.",
+        riesgos: "Tala con desbrozadoras en bordes de fincas.",
+        consecuencias: "Muerte masiva de orugas de mariposa.",
+        soluciones: "Poda selectiva dejando parches de vegetación.",
+        ayuda: "Identificar orugas antes de podar el jardín."
+      },
+      {
+        nombre: "Borraja",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs3YP6Ijtgr9VuNfTU8F4Jr04XrzhDL5i_3K3QkgzMNg&s=10",
+        importancia: "Sus flores azucaradas alimentan abejas y sus aceites cuidan la piel.",
+        riesgos: "Desplazamiento por agricultura intensiva monocultivo.",
+        consecuencias: "Menos alimento de calidad para los polinizadores.",
+        soluciones: "Sembrar bandas florales alrededor de cultivos de grano.",
+        ayuda: "Dejar crecer flores silvestres en macetas libres."
+      },
+      {
+        nombre: "Consuelda Mayor",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVU6Z8Jkn108p0vas-9YNG8FmNdl2AK5KjINjigq6PGw&s=10",
+        importancia: "Acelera la soldadura de huesos rotos y regeneración de tejidos.",
+        riesgos: "Extracción no regulada de sus raíces profundas.",
+        consecuencias: "Daño estructural al suelo agrícola.",
+        soluciones: "Cultivo controlado y propagación por división de mata.",
+        ayuda: "Respetar la raíz de las plantas al cosechar."
+      },
+      {
+        nombre: "Gordolobo Blanco",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpLjVdq4XXcJyE7VzECZkkNat653NcZNa_mqp3-i5q1w&s=10",
+        importancia: "Té tradicional para descongestionar los pulmones.",
+        riesgos: "Sequías extremas que impiden su floración.",
+        consecuencias: "Falta de semillas para el ciclo anual.",
+        soluciones: "Protección de microclimas húmedos en laderas.",
+        ayuda: "Cuidar las zonas arboladas de la montaña."
+      },
+      {
+        nombre: "Menta Poleo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLqmZOXuMNYJlDUloxNAV3puN0yDRXjSFz_cfQX1siAA&s=10",
+        importancia: "Aroma fresco y propiedades antisépticas para infusiones.",
+        riesgos: "Contaminación del agua de arroyos donde habita.",
+        consecuencias: "Muerte de colonias de menta acuática.",
+        soluciones: "Tratamiento de aguas residuales en zonas rurales.",
+        ayuda: "No usar detergentes contaminantes cerca de ríos."
+      },
+      {
+        nombre: "Lirio del Valle",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToSwBGVRrElNi3qjRzvPDTUVziSjyrI_mRWbJMc1v29A&s=10",
+        importancia: "Símbolo de primavera con flores acampanadas muy aromáticas.",
+        riesgos: "Pérdida de bosques húmedos de hoja caduca.",
+        consecuencias: "Reducción de especies del sotobosque prístino.",
+        soluciones: "Preservar el mantillo natural de las selvas frías.",
+        ayuda: "No remover la capa de hojas secas del suelo del bosque."
+      },
+      {
+        nombre: "Anturio",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZHgdkxZrlBCOIABPizTAkPXYz6SgsqYOF359AjLRxjg&s=10",
+        importancia: "Filtra el amoníaco y el xileno del aire en interiores.",
+        riesgos: "Comercio ilegal de ejemplares silvestres de la selva.",
+        consecuencias: "Extinción local de epífitas tropicales.",
+        soluciones: "Propagación masiva en viveros certificados por cultivo in vitro.",
+        ayuda: "Comprar plantas de interior en viveros legales."
+      },
+      {
+        nombre: "Glicinia",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqTWYVsyZpVoQVNEmgDABWgxUbGHouYNYknpOmyuIQhQ&s=10",
+        importancia: "Produce racimos florales impresionantes que atraen a miles de abejas.",
+        riesgos: "Poda drástica inadecuada que cancela su floración.",
+        consecuencias: "Años sin alimento para polinizadores urbanos.",
+        soluciones: "Aprender las técnicas de poda de formación en la época correcta.",
+        ayuda: "Consultar manuales de jardinería antes de podar."
+      },
+      {
+        nombre: "Peonía",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5IWubbL_HubnBZRuXv1v_7r8RzBea2ecNrcMipR5YQw&s=10",
+        importancia: "Flor milenaria apreciada por sus propiedades cosméticas y gran belleza.",
+        riesgos: "Infección por el hongo Botrytis en primaveras muy húmedas.",
+        consecuencias: "Marchitamiento de las flores y pérdida de la planta.",
+        soluciones: "Asegurar buena circulación de aire entre plantas.",
+        ayuda: "Limpiar las herramientas de jardín entre uso y uso."
+      },
+      {
+        nombre: "Crisantemo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD7jhcgfEE49EHbSJU5VjPXxv1lV6b-SdkBMi0fnI4mg&s=10",
+        importancia: "Purifica el aire eliminando benceno y produce piretrina natural.",
+        riesgos: "Uso excesivo de abonos químicos que salinizan la tierra.",
+        consecuencias: "Degradación del suelo de macetas y jardineras.",
+        soluciones: "Uso de fertilizantes orgánicos de liberación lenta.",
+        ayuda: "Reutilizar la tierra agregando compost nuevo."
+      },
+      {
+        nombre: "Camelia Japónica",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV4oF3fzmsXm8CsBlCg1vFF7inVFyxcm6_U9orn8-gTw&s=10b",
+        importancia: "Florece en pleno invierno aportando color y néctar temprano.",
+        riesgos: "Suelos calcáreos con pH alto que causan clorosis en sus hojas.",
+        consecuencias: "Hojas amarillas y muerte prematura del arbusto.",
+        soluciones: "Cultivar en tierras ácidas adecuadas.",
+        ayuda: "Utilizar agua de lluvia para regar plantas acidófilas."
+      },
+      {
+        nombre: "Gladiola",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjdfGIt9HsDaW8TwdyVBApQT-dmMulg3vvnCUnU2O95g&s=10",
+        importancia: "Espigas florales altas muy valiosas en floricultura de corte.",
+        riesgos: "Ataque de trips que deforman las flores.",
+        consecuencias: "Pérdidas económicas para pequeños floricultores.",
+        soluciones: "Uso de trampas cromáticas y depredadores naturales.",
+        ayuda: "Elegir flores producidas localmente."
+      },
+      {
+        nombre: "Campanilla Azul",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwwW-LrPvMyYid9O0G0wW-dElEdHXBcoWpBMIEqcEbZA&s=10",
+        importancia: "Cubre muros y vallas rápidamente ofreciendo refugio a colibríes.",
+        riesgos: "Considerada en algunos lugares invasora si no se controla.",
+        consecuencias: "Sofocamiento de pequeñas plantas nativas.",
+        soluciones: "Control de la dispersión de sus semillas.",
+        ayuda: "Podar los frutos secos antes de que abran."
+      },
+      {
+        nombre: "Loto Sagrado",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf1tUrv8UkfXBbrZKV4wiExFzELnbVzOt0BwVtZTnxgg&s=10",
+        importancia: "Purifica el agua de estanques y sus raíces y semillas son comestibles.",
+        riesgos: "Contaminación química pesada de estanques y ríos.",
+        consecuencias: "Acumulación de toxinas en los ecosistemas acuáticos.",
+        soluciones: "Restauración ecológica de humedales urbanizados.",
+        ayuda: "No arrojar basura ni aceites en estanques."
+      },
+      {
+        nombre: "Lirio de Agua",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB_o-LDgo4iCBi3HYag2lN0XIwR0Slfay6SElmU94cUg&s=10",
+        importancia: "Da sombra a la fauna acuática evitando el sobrecalentamiento del agua.",
+        riesgos: "Eutrofización por exceso de detergentes en el agua.",
+        consecuencias: "Falta de oxígeno en el agua y muerte de peces.",
+        soluciones: "Usar jabones biodegradables libres de fosfatos.",
+        ayuda: "Cambiar a productos de limpieza ecológicos."
+      },
+      {
+        nombre: "Ciclamen",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7JlGakFAZJl7BaQEOkIx356mge6pnhM8uPhXB2S8Wpg&s=10",
+        importancia: "Flor de sombra que aguanta bajas temperaturas en el balcón.",
+        riesgos: "Pudrición del tubérculo por mojarse el centro de la planta.",
+        consecuencias: "Pérdida rápida de la flor en temporadas frías.",
+        soluciones: "Riego por inmersión o por el plato inferior.",
+        ayuda: "Informarse sobre las formas correctas de riego."
+      },
+      {
+        nombre: "Pensamiento Silvestre",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT65SD0vbOoXL77x6yJl8fLORT8lK63huwzQVF_M3NQbg&s=10",
+        importancia: "Ancestro de las petunias modernas; atrae diminutos insectos beneficiosos.",
+        riesgos: "Uso de insecticidas de amplio espectro en jardinería.",
+        consecuencias: "Muerte accidental de insectos no dañinos.",
+        soluciones: "Fomentar el control de plagas con fauna auxiliar.",
+        ayuda: "Atraer mariquitas a tu jardín plantando flores pequeñas."
+      },
+      {
+        nombre: "Flor de Lys",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6uF4clI7dD5aOTFO-7dUef-j_c9xQEUYitUM5-P1PZg&s=10",
+        importancia: "Símbolo botánico y flor de gran belleza aromática.",
+        riesgos: "Roedores e insectos subterráneos que devoran sus bulbos.",
+        consecuencias: "Desaparición de colecciones florales históricas.",
+        soluciones: "Protección física de bulbos con mallas metálicas.",
+        ayuda: "Plantar en macetas protegidas si hay plagas."
+      },
+      {
+        nombre: "Nardo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8A0NSOl9sBO31ksjeLUyuvGul_LSKA_B4q8JknMGXYg&s=10",
+        importancia: "Posee una de las fragancias nocturnas más potentes del mundo botánico.",
+        riesgos: "Abandono de su cultivo por el alto costo de cosecha manual.",
+        consecuencias: "Sustitución por perfumes sintéticos industriales.",
+        soluciones: "Apoyar la perfumería artesanal sostenible.",
+        ayuda: "Comprar perfumes basados en aceites naturales."
+      },
+      {
+        nombre: "Ranúnculo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBAUybph1KzAiF-8y4Oh1aVzh7vsbWzo3Ssa00XkEHBQ&s=10b",
+        importancia: "Flores multicapa de vivos colores que embellecen la primavera.",
+        riesgos: "Exceso de humedad en el suelo que pudre sus garras.",
+        consecuencias: "Pérdida de la planta antes de la floración.",
+        soluciones: "Mezclar la tierra con perlita o arena de río.",
+        ayuda: "Asegurar que las macetas tengan agujeros de drenaje."
+      },
+      {
+        nombre: "Cinta (Mala Madre)",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS08Ty8uC8x50p2P8eqf5GKdQS0HD6GTdRlQkadxCozWw&s=10",
+        importancia: "Una de las mejores plantas para absorber monóxido de carbono en el hogar.",
+        riesgos: "Puntas secas por falta de humedad ambiental en interiores.",
+        consecuencias: "Aspecto deteriorado y menor capacidad fotosintética.",
+        soluciones: "Pulverizar sus hojas con agua tibia regularmente.",
+        ayuda: "Tener plantas purificadoras en el dormitorio."
+      },
+      {
+        nombre: "Bromelia Fasciata",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScWVT5JlJuEAFvJaMV93bXfeRkjaF-LPF2xgQLxBCyuQ&s=10",
+        importancia: "Almacena agua en su tanque central creando un ecosistema para diminutos anfibios.",
+        riesgos: "Fumigaciones contra mosquitos que contaminan su reserva de agua.",
+        consecuencias: "Muerte de renacuajos y fauna asociada.",
+        soluciones: "Uso de larvicidas biológicos específicos.",
+        ayuda: "Renovar el agua del tanque de la bromelia semanalmente."
+      },
+      {
+        nombre: "Aechmea",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQkKaQBzcxWBNoJmOxjJm62xWN0biELYlp_1-8Fggleg&s=10",
+        importancia: "Epífita tropical resistente que no requiere tierra profunda.",
+        riesgos: "Deforestación de los árboles donde vive apoyada.",
+        consecuencias: "Caída y muerte de la planta en el suelo del bosque.",
+        soluciones: "Proteger los árboles maduros de las selvas.",
+        ayuda: "Apoyar reservas ecológicas privadas."
+      },
+      {
+        nombre: "Flor de Cera",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlmfdpegnmjvXkP2REfB5huby0dOwM6mnmpO3aBJd_dJ5d1PCdIIfHz2g&s=10",
+        importancia: "Sus floraciones parecen hechas de porcelana y desprenden un dulce aroma nocturno.",
+        riesgos: "Luz solar directa intensa que quema sus hojas carnosas.",
+        consecuencias: "Manchas irreparables y caída de capullos.",
+        soluciones: "Ubicación en luz brillante pero indirecta.",
+        ayuda: "Aprender a ubicar las plantas según sus necesidades de luz."
+      },
+      {
+        nombre: "Cactus de Navidad",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnsswLvPPc5XXZoAAHnpKeguLI0oeKO1Sw8lWot9eXFw&s=10",
+        importancia: "Florece en los meses fríos de invierno alegrando los interiores.",
+        riesgos: "Mover la maceta de lugar cuando tiene botones florales.",
+        consecuencias: "Caída masiva e inmediata de todas las flores.",
+        soluciones: "Mantener la planta fija durante el periodo de floración.",
+        ayuda: "Evitar manipular las plantas cuando están floreciendo."
+      },
+      {
+        nombre: "Agapanto",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFzWjZTnUQv-esKCdvEBtKTb1wbwmqvHw-cv-s9xru9g&s=10",
+        importancia: "Sus raíces fuertes sujetan taludes y previenen deslizamientos de tierra.",
+        riesgos: "Ataque del caracol común en sus hojas anchas.",
+        consecuencias: "Muescas y daño estético severo.",
+        soluciones: "Control manual o ceniza de madera en la base.",
+        ayuda: "Usar ceniza orgánica en lugar de venenos químicos."
+      },
+      {
+        nombre: "Astromelia",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbzxAkVaWeMmHcemSwdl-3UZdhLJSvfZqIuEP54cfitw&s=10",
+        importancia: "Símbolo de amistad y durabilidad en arreglos florales.",
+        riesgos: "Cosecha arrancando los tubérculos del suelo.",
+        consecuencias: "Muerte del rizoma y no reaparición el año siguiente.",
+        soluciones: "Cortar los tallos con tijeras desinfectadas.",
+        ayuda: "Utilizar siempre tijeras limpias al podar."
+      },
+      {
+        nombre: "Pájaro del Paraíso",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxuBfIwtGARXxcJehBmysAiyZsKZEew6-mw0VY2QtVKQ&s=10",
+        importancia: "Estructura floral exótica adaptada para ser polinizada por aves.",
+        riesgos: "Heladas intensas que congelan sus tejidos carnosos.",
+        consecuencias: "Muerte de las hojas y congelamiento de raíces.",
+        soluciones: "Cubrir con mantas térmicas agrícolas en invierno.",
+        ayuda: "Proteger tus plantas exteriores del frío extremo."
+      },
+      {
+        nombre: "Kalanchoe",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08htZOIhDeyY53v3wR7qLFtTk1VbmR1AgIjDnmJTGIg&s=10",
+        importancia: "Planta suculenta muy fácil de cuidar que purifica el aire de la noche.",
+        riesgos: "Exceso de riego que causa hongo blanco en las hojas.",
+        consecuencias: "Pudrición rápida del tallo principal.",
+        soluciones: "Dejar secar la tierra por completo entre riegos.",
+        ayuda: "Recordar que las suculentas necesitan poca agua."
+      },
+      {
+        nombre: "Espatifilo Gigante",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPt0xo4p2x7L0Ln5cfU6PhmgqS8_ft5__Eq5eli3ogiA&s=10",
+        importancia: "Absorbe las esporas del moho en ambientes húmedos como baños.",
+        riesgos: "Agua de riego con exceso de cloro o sal.",
+        consecuencias: "Puntas de las hojas marrones y secas.",
+        soluciones: "Reposar el agua del grifo 24 horas antes de regar.",
+        ayuda: "Dejar evaporar el cloro del agua de riego."
+      },
+      {
+        nombre: "Hiedra Sueca",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA0CylkfS0ipP8lapSlKyydwKt9dsJ-M2CBIxVgaKWkQ&s=10",
+        importancia: "Planta colgante de rápido crecimiento excelente para muros verdes.",
+        riesgos: "Ataque de cochinilla algodonosa en climas secos.",
+        consecuencias: "Planta pegajosa y debilitamiento general.",
+        soluciones: "Limpiar las hojas con jabón potásico o neutro.",
+        ayuda: "Usar soluciones ecológicas contra plagas."
+      },
+      {
+        nombre: "Coleo",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZaTH25TpEbeRFl7iZ-ree-c52BgtROPaTKfpE2q8EcA&s=10",
+        importancia: "Hojas multicolor que aportan vistosidad sin necesidad de floración.",
+        riesgos: "Falta de luz que provoca pérdida del color intenso de sus hojas.",
+        consecuencias: "Hojas totalmente verdes y tallos débiles.",
+        soluciones: "Ubicar en lugares con buena iluminación filtrada.",
+        ayuda: "Girar las macetas para un crecimiento parejo."
+      },
+      {
+        nombre: "Calatea",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS12FWMu81ibjZwIWTRfH711EVtxyoG6ykVUNG0PNxd_Q&s=10",
+        importancia: "Mueve sus hojas al ritmo del día, optimizando la captura de luz.",
+        riesgos: "Ambientes muy secos por calefacción o aire acondicionado.",
+        consecuencias: "Enrollamiento y secado del borde de las hojas.",
+        soluciones: "Usar humidificadores cerca de las plantas tropicales.",
+        ayuda: "Agrupar plantas para crear un microclima húmedo."
+      },
+      {
+        nombre: "Peperomia",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVbEDyWzvD1FsE0RL09S2WQJebFV-tLtH5ECC5VlxjNQ&s=10",
+        importancia: "Compacta y perfecta para espacios pequeños, apta para mascotas.",
+        riesgos: "Sustrato apelmazado sin aireación.",
+        consecuencias: "Asfixia radicular y caída de hojas sanas.",
+        soluciones: "Usar fibra de coco y vermiculita en el sustrato.",
+        ayuda: "Elegir plantas no tóxicas si tienes mascotas."
+      },
+      {
+        nombre: "Ficus Benjamina",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStiI75pwF0LKrlEJLPqpDLb5Y13nVMxPUmHASPkRDnuA&s=10",
+        importancia: "Filtra toxinas de formaldehído emitidas por muebles y pinturas.",
+        riesgos: "Cambios bruscos de lugar o corrientes de aire.",
+        consecuencias: "Caída masiva e instantánea de sus hojas.",
+        soluciones: "Ubicar en un lugar definitivo sin corrientes de aire.",
+        ayuda: "Proteger las plantas de interior del aire acondicionado."
+      },
+      {
+        nombre: "Drácena Tricolor",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGWbsqx6qzhw7Fs6YlYdXjDSeLkQTE8Ti3q3N8EvQ4uA&s=10",
+        importancia: "Estructura elegante que elimina xileno y tricloroetileno.",
+        riesgos: "Acumulación de polvo en sus hojas largas.",
+        consecuencias: "Reducción de su capacidad de purificar el aire.",
+        soluciones: "Limpiar las hojas suavemente con un paño húmedo.",
+        ayuda: "Mantener limpias las hojas de tus plantas de interior."
+      },
+      {
+        nombre: "Drácena Marginata",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDB_d1TSkzll530l6HxP2PKedSJFXU4K3pjo_gamkBIA&s=10",
+        importancia: "Planta resistente que tolera poca luz en departamentos u oficinas.",
+        riesgos: "Encharcamiento continuado en la base de la maceta.",
+        consecuencias: "Tallo blando y pudrición irreversible.",
+        soluciones: "Vaciar el plato inferior después de cada riego.",
+        ayuda: "No dejar agua estancada en las macetas."
+      },
+      {
+        nombre: "Helecho Cuerno de Alce",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkjIACHyFiRJ1vCcVjvNeAM89r-P0xbo09Z-l8Fh3K8g&s=10",
+        importancia: "Epífita fascinante que crece sobre madera sin dañar al árbol.",
+        riesgos: "Limpiar el polvillo protector blanco de sus frondas.",
+        consecuencias: "Deshidratación rápida de las hojas.",
+        soluciones: "No frotar las frondas; solo pulverizar agua.",
+        ayuda: "Respetar la capa natural de protección de las plantas."
+      },
+      {
+        nombre: "Lila",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7_ct9UfVmDvbxoR_F9SGWR2MTSsiE0YGDxpu3F-FUnw&s=10",
+        importancia: "Produce racimos florales violetas con uno de los mejores aromas de primavera.",
+        riesgos: "Inviernos demasiado cálidos que impiden su letargo estacional.",
+        consecuencias: "Floración escasa o nula en la primavera siguiente.",
+        soluciones: "Plantar en zonas donde la temperatura baje lo suficiente.",
+        ayuda: "Elegir plantas adaptadas al clima de tu región."
+      },
+      {
+        nombre: "Madreselva",
+        imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3LVLEJzikoNBYWyEiOeqlbcNfx_26X6lBIWdf7NSZvA&s=10",
+        importancia: "Enredadera nocturna que atrae polillas de esfinge y colibríes.",
+        riesgos: "Podas drásticas fuera de época.",
+        consecuencias: "Eliminación de las ramas que producirían flores.",
+        soluciones: "Podar inmediatamente después de que termine la floración.",
+        ayuda: "Dejar espacio libre para el crecimiento de enredaderas."
+      }
+    ];
+
+    const contenedor = document.getElementById("contenedor");
+
+    // Función para renderizar las tarjetas en pantalla
+    function mostrarPlantas(lista) {
+      contenedor.innerHTML = "";
+
+      if (lista.length === 0) {
+        contenedor.innerHTML = `
+          <p style="grid-column: 1/-1; text-align: center; font-size: 22px; color: #666; margin: 40px 0;">
+            No se encontraron plantas con ese nombre. 🌿
+          </p>
+        `;
+        return;
+      }
+
+      lista.forEach(planta => {
+        const plantaJSON = encodeURIComponent(JSON.stringify(planta));
+
+        contenedor.innerHTML += `
+          <div class="card" onclick="abrirModal('${plantaJSON}')">
+            <img src="${planta.imagen}" alt="${planta.nombre}">
+            <h2>${planta.nombre}</h2>
+            <p>Haz clic para conocer más información</p>
+          </div>
+        `;
+      });
+    }
+
+    // Función para filtrar conforme el usuario escribe
+    function filtrarPlantas() {
+      const texto = document.getElementById("buscador").value.toLowerCase();
+
+      const plantasFiltradas = plantas.filter(planta =>
+        planta.nombre.toLowerCase().includes(texto)
+      );
+
+      mostrarPlantas(plantasFiltradas);
+    }
+
+    // Carga inicial de todas las especies
+    mostrarPlantas(plantas);
+
+    // Funciones para el Modal
+    function abrirModal(plantaEncoded) {
+      const planta = JSON.parse(decodeURIComponent(plantaEncoded));
+
+      document.getElementById("modal").style.display = "flex";
+      document.getElementById("imagen").src = planta.imagen;
+      document.getElementById("nombre").innerText = planta.nombre;
+      document.getElementById("importancia").innerText = planta.importancia;
+      document.getElementById("riesgos").innerText = planta.riesgos;
+      document.getElementById("consecuencias").innerText = planta.consecuencias;
+      document.getElementById("soluciones").innerText = planta.soluciones;
+      document.getElementById("ayuda").innerText = planta.ayuda;
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
 
 </body>
+
 </html>
